@@ -1,0 +1,16 @@
+# Project Rules
+## Git
+- Only commit and push to main when explicitly asked by the user
+- Never auto-commit or auto-push after making changes
+- Never create new branches — always use main
+- Use clear descriptive commit messages
+## Server
+- Always make file changes directly without waiting for background processes
+- After making file changes, restart the local server automatically
+## Project Info
+- This is a plain HTML/CSS website for Rocker Industries
+- Pages: index.html, about.html, solutions.html, applications.html, quality.html, contact.html
+- Images are stored in the /images folder
+## General
+- Never create new files unless explicitly asked
+- Always confirm when changes are complete
