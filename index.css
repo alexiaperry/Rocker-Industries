@@ -4,7 +4,7 @@
     /* font-family: 'Open Sans', sans-serif; */
 }
 .header {
-    min-height: 100vh;
+    min-height: clamp(420px, 55vh, 720px);
     width: 100%;
     background-image: linear-gradient(
             rgba(77, 88, 134, 0.7),
