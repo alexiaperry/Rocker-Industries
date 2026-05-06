@@ -18,7 +18,7 @@ body {
 }
 
 .hero-banner {
-    min-height: clamp(360px, 45vh, 680px);
+    min-height: clamp(432px, 54vh, 816px);
     width: 100%;
     position: relative;
     background: #ffffff;
@@ -99,7 +99,7 @@ nav img {
         position: absolute;
         left: 50%;
         top: 50%;
-        transform: translate(-50%, -50%) translateY(6px);
+        transform: translate(-50%, -50%) translateY(12px);
         flex: 0;
         text-align: center;
         margin-top: 0;
@@ -245,11 +245,18 @@ nav .fa-solid {
     width: 80%;
     margin: auto;
     text-align: center;
-    padding-top: 100px;
+    padding-top: 50px;
 }
 h1 {
     font-size: 36px;
     font-weight: 600;
+}
+
+/* Course section headline override */
+.course > h1 {
+    font-size: 20pt;
+    font-weight: 600;
+    line-height: 1.5;
 }
 
 p {
