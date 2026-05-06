@@ -70,11 +70,7 @@
 .hero-banner #heroCarousel .carousel-item img {
     height: 100%;
     width: 100%;
-    object-fit: contain;
-}
-
-.hero-banner #heroCarousel .carousel-item {
-    background: #0b1324;
+    object-fit: cover;
 }
 
 nav {
