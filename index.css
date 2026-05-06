@@ -13,6 +13,8 @@ body {
     width: 100%;
     background: #ffffff;
     position: relative;
+    box-shadow: 0 10px 22px rgba(11, 19, 36, 0.08);
+    z-index: 10;
 }
 
 .hero-banner {
@@ -134,12 +136,12 @@ nav img {
     font-weight: bold;
     color: #ffffff;
     position: absolute;
-    width: 90%;
+    width: min(920px, 88%);
     max-width: 920px;
     top: 54%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
+    left: 6%;
+    transform: translateY(-50%);
+    text-align: left;
     z-index: 2;
     padding: 0 clamp(10px, 2.2vw, 24px);
     text-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
@@ -157,19 +159,22 @@ nav img {
 }
 
 .learn-btn {
-    border: 1px solid white;
     display: inline-block;
     padding: 10px 18px;
     text-decoration: none;
-    color: white;
-    border-radius: 5px;
+    color: #ffffff;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #0b1324 0%, #12305e 100%);
+    box-shadow: 0 12px 26px rgba(11, 19, 36, 0.35);
+    transition: transform 160ms ease, box-shadow 160ms ease, filter 160ms ease;
+    letter-spacing: 0.01em;
 }
 
 .learn-btn:hover {
-    border: 1px solid #1e6091;
-    background-color: #1e6091;
-    transition: 0.5s;
-    color: white;
+    filter: brightness(1.05);
+    transform: translateY(-1px);
+    box-shadow: 0 16px 32px rgba(11, 19, 36, 0.42);
+    color: #ffffff;
 }
 
 .menu {
