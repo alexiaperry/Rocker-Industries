@@ -139,9 +139,9 @@ nav img {
     width: min(920px, 88%);
     max-width: 920px;
     top: 54%;
-    left: 6%;
-    transform: translateY(-50%);
-    text-align: left;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
     z-index: 2;
     padding: 0 clamp(10px, 2.2vw, 24px);
     text-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
