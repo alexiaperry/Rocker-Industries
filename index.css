@@ -20,14 +20,10 @@
 
 .hero-carousel-frame {
     position: absolute;
-    top: clamp(14px, 3.2vw, 28px);
-    bottom: clamp(14px, 3.2vw, 28px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: min(1320px, calc(100% - (2 * clamp(12px, 2.6vw, 36px))));
-    border-radius: 18px;
+    inset: 0;
+    border-radius: 0;
     overflow: hidden;
-    box-shadow: 0 18px 50px rgba(11, 19, 36, 0.55);
+    box-shadow: none;
     z-index: 0;
 }
 
@@ -41,18 +37,7 @@
 }
 
 .hero-carousel-frame::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(
-        90deg,
-        rgba(11, 19, 36, 0.8) 0%,
-        rgba(11, 19, 36, 0) 18%,
-        rgba(11, 19, 36, 0) 82%,
-        rgba(11, 19, 36, 0.8) 100%
-    );
-    z-index: 3;
-    pointer-events: none;
+    content: none;
 }
 
 .hero-banner #heroCarousel {
@@ -84,8 +69,9 @@ nav {
 nav img {
     display: flex;
     width: 20vh;
-    margin-top: 6px;
-    margin-bottom: 6px;
+    margin-top: 0;
+    margin-bottom: 0;
+    transform: translateY(-2px);
 }
 
 .logotext {
@@ -97,7 +83,7 @@ nav img {
 .nav-links {
     flex: 1;
     text-align: right;
-    margin-top: 10px;
+    margin-top: 0;
 }
 
 /* Center desktop nav links while logo stays left */
@@ -105,7 +91,8 @@ nav img {
     .nav-links {
         position: absolute;
         left: 50%;
-        transform: translateX(-50%);
+        top: 50%;
+        transform: translate(-50%, -50%) translateY(6px);
         flex: 0;
         text-align: center;
         margin-top: 0;
