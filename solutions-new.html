@@ -63,43 +63,7 @@
                 --radius-md: 14px;
             }
 
-            /* Match About's navbar polish + mark Solutions active */
-            .header {
-                background: rgba(255, 255, 255, 0.88);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                box-shadow: 0 14px 30px rgba(11, 19, 36, 0.1);
-                border-bottom: 1px solid rgba(11, 19, 36, 0.08);
-            }
-
-            .nav-links ul li a {
-                position: relative;
-                transition: color 180ms ease, opacity 180ms ease;
-            }
-
-            /* Smooth sliding underline on hover (keeps active ::after underline) */
-            .nav-links ul li a::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                right: 0;
-                bottom: -8px;
-                height: 2px;
-                background: rgba(11, 19, 36, 0.85);
-                border-radius: 999px;
-                transform: scaleX(0);
-                transform-origin: left;
-                transition: transform 0.3s ease;
-                opacity: 0.9;
-            }
-
-            .nav-links ul li a:hover::before {
-                transform: scaleX(1);
-            }
-
-            .nav-links ul li a:hover {
-                color: #12305e;
-            }
+            /* Mark Solutions active */
 
             /* Solutions is second item in nav list */
             .nav-links ul li:nth-child(2) > a::after {
@@ -457,18 +421,19 @@
                 margin-top: 16px;
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 18px;
+                gap: 12px;
             }
 
             .product-feature {
-                border-radius: 0;
-                overflow: visible;
-                border: none;
-                box-shadow: none;
-                background: transparent;
+                border-radius: 18px;
+                overflow: hidden;
+                border: 1px solid rgba(11, 19, 36, 0.1);
+                box-shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
+                background: #f8f9fa;
                 display: grid;
                 grid-template-columns: 1fr 1fr;
-                min-height: clamp(340px, 38vw, 440px);
+                min-height: clamp(360px, 38vw, 440px);
+                align-items: stretch;
                 position: relative;
                 isolation: isolate;
             }
@@ -478,14 +443,15 @@
             }
 
             .product-feature + .product-feature {
-                padding-top: clamp(14px, 2.2vw, 22px);
-                border-top: 1px solid rgba(11, 19, 36, 0.1);
+                padding-top: 0;
+                border-top: none;
             }
 
             .product-panel {
                 position: relative;
                 padding: clamp(20px, 3vw, 30px);
-                background: rgba(255, 255, 255, 0.96);
+                padding-left: clamp(20px, 3vw, 30px);
+                background: transparent;
                 color: var(--ink);
                 display: flex;
                 flex-direction: column;
@@ -542,11 +508,12 @@
 
             .product-visual {
                 position: relative;
-                overflow: visible;
+                overflow: hidden;
                 background: transparent;
-                display: block;
-                padding: 0;
-                align-self: stretch;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: clamp(18px, 2.6vw, 26px);
             }
 
             .product-visual::before {
@@ -556,11 +523,12 @@
             .product-visual img.main {
                 position: relative;
                 width: 100%;
-                height: 100%;
-                min-height: clamp(260px, 28vw, 360px);
+                max-width: 320px;
+                margin: 0;
+                height: auto;
                 object-fit: cover;
                 display: block;
-                border-radius: 18px;
+                border-radius: 0;
                 box-shadow: none;
                 transform: none;
                 filter: saturate(1.02) contrast(1.02);
@@ -571,12 +539,9 @@
                 transform: scale(1.015);
             }
 
-            .product-panel {
-                border-right: none;
-            }
-
+            .product-panel,
             .product-feature--reverse .product-panel {
-                border-left: none;
+                border: none;
             }
 
             /* Section 3: premium/simple text */
@@ -755,6 +720,7 @@
                 .product-visual img.main {
                     max-height: 320px;
                     width: 100%;
+                    max-width: 320px;
                 }
                 .product-panel,
                 .product-feature--reverse .product-panel {
