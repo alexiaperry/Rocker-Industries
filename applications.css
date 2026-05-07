@@ -3,15 +3,36 @@
 * {
     margin: 0;
     padding: 0;
-    /* font-family: 'Open Sans', sans-serif; */
+}
+
+/* Force Geist site-wide; defeat Bootstrap's --bs-body-font-family default */
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+li,
+span,
+button,
+input,
+select,
+textarea {
+    font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont,
+        "Segoe UI", sans-serif !important;
 }
 
 body {
     font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
 }
+/* Total height ≈ nav + index hero-banner (clamp(432px, 54vh, 816px)) */
 .header {
-    min-height: 75vh;
+    min-height: calc(72px + clamp(432px, 54vh, 816px));
     width: 100%;
     background-image: linear-gradient(
             rgba(77, 88, 134, 0.7),
@@ -21,7 +42,9 @@ body {
     background-position: center;
     background-size: cover;
     position: relative;
-    margin-bottom: 3.5em;
+    margin-bottom: 0;
+    display: flex;
+    flex-direction: column;
 }
 
 nav {
@@ -108,6 +131,10 @@ nav .fa-solid {
         font-size: 20px;
     }
 
+    .top {
+        padding: clamp(24px, 7vw, 44px) 18px clamp(10px, 2vw, 18px);
+    }
+
     .nav-links {
         position: absolute;
         background: #1e6091;
@@ -136,35 +163,162 @@ nav .fa-solid {
 }
 
 .top {
-    position: absolute;
-    bottom: 0px;
-    margin-top: 3em;
-    margin-bottom: 3em;
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0 auto;
+    /* Less bottom padding — tighter handoff to mission section */
+    padding: clamp(28px, 4.5vw, 64px) clamp(20px, 4vw, 40px)
+        clamp(12px, 1.6vw, 24px);
     font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif;
     color: #fff;
-    padding-left: 100px;
+    max-width: 920px;
+    width: 100%;
 }
 
-.top h1 {
-    font-size: 45px;
+/* Hero title — largest text in hero */
+.top h1.title {
+    margin: 0;
+    max-width: none;
+    font-size: clamp(1.55rem, 4.2vw, 2.95rem);
+    line-height: 1.08;
+    font-weight: 750;
+    letter-spacing: -0.02em;
     color: #fff;
+    text-align: center;
 }
 
-.top p {
-    font-size: 17px;
-    color: #fff;
+@media (min-width: 720px) {
+    .top h1.title {
+        white-space: nowrap;
+    }
 }
 
-.title {
-    font-size: 36px;
+/* Hero subhead — sits beneath the headline */
+.top .hero-subhead {
+    margin: clamp(14px, 1.8vw, 22px) 0 0;
+    font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    font-size: clamp(1.28rem, 2.5vw, 1.72rem);
+    line-height: 1.32;
+    font-weight: 550;
+    letter-spacing: 0.01em;
+    color: rgba(255, 255, 255, 0.94);
+    text-align: center;
+    max-width: 42ch;
+}
+
+/* Premium intro paragraph section (supporting body copy under hero) */
+.mission-section {
+    position: relative;
+    isolation: isolate;
+    background: #ffffff;
+    /* Tighter top — less gap after hero */
+    padding: clamp(18px, 2.8vw, 36px) clamp(20px, 4vw, 40px)
+        clamp(48px, 6.5vw, 96px);
+    overflow: hidden;
+}
+
+/* Subtle blueprint linework — restrained, aerospace-inspired */
+.mission-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: repeating-linear-gradient(
+            0deg,
+            rgba(11, 19, 36, 0.035) 0,
+            rgba(11, 19, 36, 0.035) 1px,
+            transparent 1px,
+            transparent 28px
+        ),
+        repeating-linear-gradient(
+            90deg,
+            rgba(11, 19, 36, 0.028) 0,
+            rgba(11, 19, 36, 0.028) 1px,
+            transparent 1px,
+            transparent 32px
+        );
+    mask-image: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.4) 55%,
+        transparent 82%
+    );
+    -webkit-mask-image: radial-gradient(
+        ellipse at center,
+        rgba(0, 0, 0, 0.85) 0%,
+        rgba(0, 0, 0, 0.4) 55%,
+        transparent 82%
+    );
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 0;
+}
+
+/* Soft cinematic atmosphere — barely-there gradient lift */
+.mission-section::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(
+        ellipse at 50% 0%,
+        rgba(83, 151, 234, 0.06) 0%,
+        rgba(255, 255, 255, 0) 60%
+    );
+    pointer-events: none;
+    z-index: 0;
+}
+
+.mission-inner {
+    position: relative;
+    z-index: 1;
+    width: min(880px, 100%);
+    margin: 0 auto;
+    text-align: center;
+}
+
+.mission-body {
+    max-width: 64ch;
+    margin: 0 auto;
+}
+
+.mission-body p {
+    margin: 0;
+    color: #4b4c4d;
+    font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
+        sans-serif;
+    font-size: clamp(0.98rem, 1.45vw, 1.08rem);
+    line-height: 1.85em;
+    font-weight: 400;
+    letter-spacing: 0.005em;
+    text-align: center;
+}
+
+.mission-body p + p {
+    margin-top: clamp(14px, 1.6vw, 20px);
+}
+
+/* Section headings — match solutions.html .solutions-title typography */
+.app-type p.title,
+.category p.title {
+    font-weight: 750;
+    font-size: clamp(1.35rem, 2.5vw, 2rem);
+    line-height: 1.2;
     color: #1e6091;
 }
 
 .subtitle {
     color: #1e6091;
     margin-bottom: 25px;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 820;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
 }
 
 .carousel-item img {
@@ -181,26 +335,45 @@ nav .fa-solid {
     margin-bottom: 5em;
 }
 
+/* Tighten the gap between mission section and the first Applications block */
+.mission-section + .app-type {
+    margin-top: clamp(18px, 2.4vw, 32px);
+}
+
+/* Lists — match solutions.html .product-list */
 .app-list {
-    font-size: 17px;
+    font-size: 15px;
+    line-height: 1.75em;
+    font-weight: 400;
+}
+
+.app-list li + li {
+    margin-top: 6px;
 }
 
 .craft-type {
     color: #1e6091;
-    font-size: 20px;
-    font-weight: 550;
+    font-size: clamp(1.05rem, 1.6vw, 1.15rem);
+    font-weight: 820;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
 }
 
 .list-title {
     margin-top: -9px;
     margin-left: -15px;
     color: #1e6091;
-    font-size: 20px;
+    font-size: 18px;
+    font-weight: 820;
+    line-height: 1.2;
+    letter-spacing: 0.01em;
 }
 
 .bottom-text {
     margin-top: 3em;
-    font-size: 20px;
+    font-size: 16px;
+    line-height: 1.9em;
+    font-weight: 400;
 }
 
 .category {

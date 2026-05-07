@@ -4,46 +4,541 @@
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Applications • Rocker Industries</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Lato&family=Barlow:wght@300&family=Finlandica&family=Poppins:wght@100;200;400;600;700&family=Roboto:ital@1&display=swap"
+            rel="stylesheet"
+        />
+
         <link
             rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
         />
         <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
+            integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM"
+            crossorigin="anonymous"
         />
         <script
             src="https://kit.fontawesome.com/f868733ea1.js"
             crossorigin="anonymous"
         ></script>
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap"
-            rel="stylesheet"
-        />
-        <link
-            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
-            rel="stylesheet"
-        />
-        <link rel="stylesheet" href="applications.css" />
+
         <link rel="stylesheet" href="index.css" />
-        <title>Applications</title>
+
+        <style>
+            :root {
+                --ink: #0b1324;
+                --muted: rgba(11, 19, 36, 0.72);
+                --soft: #f4f6f8;
+                --line: rgba(11, 19, 36, 0.12);
+                --brand: #1e6091;
+                --accent-muted-blue: rgba(83, 151, 234, 0.9);
+                --accent-light: #a8c8ee;
+                --shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
+                --shadow-hover: 0 22px 52px rgba(16, 24, 40, 0.14);
+                --radius-lg: 18px;
+                --radius-md: 14px;
+            }
+
+            /* Geist site-wide; defeat Bootstrap defaults */
+            html,
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            a,
+            li,
+            span,
+            button,
+            input,
+            select,
+            textarea {
+                font-family: "Geist", system-ui, -apple-system,
+                    BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+            }
+
+            body {
+                color: var(--ink);
+                background: #ffffff;
+            }
+
+            /* Active nav: Applications is 3rd nav item */
+            .nav-links ul li:nth-child(3) > a::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -8px;
+                width: 72%;
+                height: 2px;
+                background: var(--accent-muted-blue);
+                border-radius: 999px;
+                box-shadow: 0 8px 20px rgba(83, 151, 234, 0.28);
+            }
+
+            /* ============================================
+               HERO
+               ============================================ */
+            .applications-hero {
+                position: relative;
+                min-height: clamp(520px, 64vh, 720px);
+                width: 100%;
+                overflow: hidden;
+                background:
+                    linear-gradient(
+                        100deg,
+                        rgba(11, 19, 36, 0.86) 0%,
+                        rgba(11, 19, 36, 0.62) 55%,
+                        rgba(11, 19, 36, 0.5) 100%
+                    ),
+                    url("images/Hero-1.png") right center / cover no-repeat;
+                display: flex;
+                align-items: center;
+            }
+
+            .applications-hero::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: radial-gradient(
+                    ellipse at 0% 50%,
+                    rgba(11, 19, 36, 0.45) 0%,
+                    rgba(11, 19, 36, 0) 60%
+                );
+                pointer-events: none;
+                z-index: 1;
+            }
+
+            .applications-hero .hero-content {
+                position: relative;
+                z-index: 2;
+                width: min(1280px, 96%);
+                margin: 0;
+                padding: clamp(28px, 4.9vw, 67px) clamp(28px, 5vw, 64px)
+                    clamp(28px, 4.9vw, 67px) clamp(20px, 4vw, 56px);
+                color: #ffffff;
+                text-align: left;
+                max-width: 1280px;
+            }
+
+            .hero-content > * {
+                max-width: 660px;
+            }
+
+            .hero-eyebrow {
+                margin: 0 0 18px;
+                color: var(--accent-light);
+                font-size: 12.5px;
+                font-weight: 600;
+                letter-spacing: 0.32em;
+                text-transform: uppercase;
+            }
+
+            .hero-headline {
+                margin: 0;
+                color: #ffffff;
+                font-weight: 750;
+                font-size: clamp(2rem, 4.6vw, 3.4rem);
+                line-height: 1.08;
+                letter-spacing: -0.012em;
+                max-width: 16ch;
+            }
+
+            .hero-subhead {
+                margin: 18px 0 22px;
+                color: var(--accent-light);
+                font-size: clamp(0.85rem, 1.05vw, 0.95rem);
+                font-weight: 600;
+                letter-spacing: 0.24em;
+                text-transform: uppercase;
+            }
+
+            .hero-body {
+                margin: 0;
+                color: rgba(255, 255, 255, 0.88);
+                font-size: clamp(0.98rem, 1.4vw, 1.08rem);
+                line-height: 1.75;
+                font-weight: 400;
+                max-width: 60ch;
+            }
+
+            .hero-body + .hero-body {
+                margin-top: 14px;
+            }
+
+            /* ============================================
+               SECTIONS
+               ============================================ */
+            .app-section {
+                padding: clamp(38px, 5vw, 72px) 0;
+                background: #ffffff;
+                position: relative;
+            }
+
+            .app-section--alt {
+                background: var(--soft);
+            }
+
+            .app-section + .app-section {
+                border-top: 1px solid #e9ecef;
+            }
+
+            .app-inner {
+                width: min(1120px, 92%);
+                margin: 0 auto;
+            }
+
+            .app-row {
+                display: grid;
+                grid-template-columns: 1fr 1.05fr;
+                gap: clamp(20px, 3.1vw, 44px);
+                align-items: center;
+            }
+
+            .app-content {
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                text-align: left;
+                width: 100%;
+            }
+
+            .app-row--reverse {
+                grid-template-columns: 1.05fr 1fr;
+            }
+
+            .app-row--reverse .app-content {
+                order: 1;
+            }
+
+            .app-row--reverse .app-media {
+                order: 2;
+            }
+
+            .app-media {
+                position: relative;
+                border-radius: 18px;
+                overflow: hidden;
+                box-shadow: 0 22px 58px rgba(11, 19, 36, 0.18);
+                background: rgba(11, 19, 36, 0.04);
+                aspect-ratio: 4 / 3;
+            }
+
+            .app-media img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transition: transform 360ms ease, filter 360ms ease;
+            }
+
+            .app-row:hover .app-media img {
+                transform: scale(1.015);
+                filter: saturate(1.02) contrast(1.02);
+            }
+
+            .app-media::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(11, 19, 36, 0.08) 0%,
+                    rgba(11, 19, 36, 0) 40%,
+                    rgba(11, 19, 36, 0.16) 100%
+                );
+                pointer-events: none;
+            }
+
+            .app-heading {
+                margin: 0 0 6px;
+                color: var(--ink);
+                font-weight: 760;
+                font-size: clamp(1.5rem, 2.6vw, 2.1rem);
+                line-height: 1.18;
+                letter-spacing: -0.005em;
+                text-align: left;
+                width: 100%;
+            }
+
+            .app-subhead {
+                margin: 0 0 14px;
+                color: var(--brand);
+                font-size: 12.5px;
+                font-weight: 700;
+                letter-spacing: 0.26em;
+                text-transform: uppercase;
+                text-align: left;
+                width: 100%;
+            }
+
+            .app-body {
+                margin: 0 0 18px;
+                color: #4b4c4d;
+                font-size: clamp(0.98rem, 1.35vw, 1.05rem);
+                line-height: 1.8;
+                font-weight: 400;
+                max-width: 60ch;
+                text-align: left;
+                width: 100%;
+            }
+
+            /* Commercial: balanced 3-column flow (column-fill evens distribution) */
+            .platform-list {
+                list-style: none;
+                margin: 14px 0 0;
+                padding: 0;
+                display: block;
+                width: 100%;
+                columns: 3;
+                column-gap: clamp(22px, 2.8vw, 36px);
+                column-fill: balance;
+            }
+
+            .platform-list li {
+                position: relative;
+                padding-left: 14px;
+                color: #4b4c4d;
+                font-size: 14.5px;
+                line-height: 1.55;
+                margin-bottom: 8px;
+                break-inside: avoid;
+                page-break-inside: avoid;
+                -webkit-column-break-inside: avoid;
+            }
+
+            .platform-list li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 8px;
+                width: 5px;
+                height: 5px;
+                border-radius: 999px;
+                background: var(--accent-muted-blue);
+            }
+
+            .platform-list strong {
+                color: var(--ink);
+                font-weight: 700;
+            }
+
+            /* Categorized list: <span class="label">Attack bomber:</span> ... */
+            .cat-list {
+                list-style: none;
+                margin: 14px 0 0;
+                padding: 0;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 14px;
+                width: 100%;
+                text-align: left;
+            }
+
+            .cat-list--two-col {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px 28px;
+            }
+
+            .cat-list--two-col li {
+                line-height: 1.55;
+            }
+
+            .cat-list li {
+                position: relative;
+                padding-left: 16px;
+                color: #4b4c4d;
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .cat-list li::before {
+                content: "";
+                position: absolute;
+                left: 0;
+                top: 10px;
+                width: 5px;
+                height: 5px;
+                border-radius: 999px;
+                background: var(--accent-muted-blue);
+            }
+
+            .cat-list .label {
+                display: inline;
+                color: var(--ink);
+                font-weight: 700;
+                margin-right: 4px;
+            }
+
+            /* ============================================
+               CREDIBILITY BAR
+               ============================================ */
+            .credibility-bar {
+                background: var(--ink);
+                color: #ffffff;
+                padding: clamp(38px, 5.2vw, 67px) 0;
+                text-align: center;
+                position: relative;
+                overflow: hidden;
+            }
+
+            .credibility-bar::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background:
+                    radial-gradient(
+                        ellipse at 50% 0%,
+                        rgba(83, 151, 234, 0.08) 0%,
+                        rgba(11, 19, 36, 0) 60%
+                    ),
+                    repeating-linear-gradient(
+                        0deg,
+                        rgba(255, 255, 255, 0.025) 0,
+                        rgba(255, 255, 255, 0.025) 1px,
+                        transparent 1px,
+                        transparent 28px
+                    );
+                pointer-events: none;
+            }
+
+            .credibility-inner {
+                position: relative;
+                z-index: 1;
+                width: min(880px, 92%);
+                margin: 0 auto;
+            }
+
+            .credibility-bar h2 {
+                margin: 0;
+                color: #ffffff;
+                font-weight: 720;
+                font-size: clamp(1.4rem, 2.6vw, 2.05rem);
+                line-height: 1.25;
+                letter-spacing: -0.005em;
+            }
+
+            .credibility-bar p {
+                margin: 16px 0 0;
+                color: rgba(255, 255, 255, 0.78);
+                font-size: clamp(0.95rem, 1.3vw, 1.05rem);
+                line-height: 1.7;
+                font-weight: 400;
+                letter-spacing: 0.005em;
+            }
+
+            /* ============================================
+               REVEAL ANIMATIONS (match solutions.html)
+               ============================================ */
+            .reveal {
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+
+            .reveal.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            .app-section {
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity 0.4s ease, transform 0.4s ease;
+            }
+
+            .app-section.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .reveal,
+                .app-section,
+                .app-media img {
+                    transition: none !important;
+                }
+                .reveal,
+                .app-section {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+
+            /* ============================================
+               RESPONSIVE
+               ============================================ */
+            @media (max-width: 980px) {
+                .applications-hero {
+                    min-height: clamp(440px, 56vh, 600px);
+                }
+
+                .app-row,
+                .app-row--reverse {
+                    grid-template-columns: 1fr;
+                    gap: clamp(20px, 3.6vw, 32px);
+                }
+
+                .app-row--reverse .app-content {
+                    order: 2;
+                }
+
+                .app-row--reverse .app-media {
+                    order: 1;
+                }
+
+                .app-media {
+                    aspect-ratio: 16 / 10;
+                    max-width: 720px;
+                    margin: 0 auto;
+                    width: 100%;
+                }
+
+                .platform-list {
+                    columns: 2;
+                    column-gap: clamp(18px, 2.4vw, 28px);
+                }
+
+                .cat-list--two-col {
+                    grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 600px) {
+                .platform-list {
+                    columns: 1;
+                    column-gap: 0;
+                }
+
+                .hero-eyebrow,
+                .hero-subhead,
+                .app-subhead {
+                    letter-spacing: 0.22em;
+                }
+            }
+        </style>
     </head>
+
     <body>
+        <!-- Navbar (match solutions.html exactly) -->
         <section class="header">
             <nav>
                 <div>
                     <a href="index.html" class="logotext"
-                        ><img
-                            src="images/rocker-logo-redesign.png"
-                            alt=""
+                        ><img src="images/rocker-logo-redesign.png" alt=""
                     /></a>
                 </div>
 
@@ -57,8 +552,7 @@
                         <li><a href="quality.html">Quality</a></li>
                         <li><a href="contact.html">Contact</a></li>
                         <li>
-                            <a
-                                href="http://supplierportal.rockerindustries.com/"
+                            <a href="http://supplierportal.rockerindustries.com/"
                                 >Supplier Portal</a
                             >
                         </li>
@@ -66,233 +560,261 @@
                 </div>
                 <i class="fa-solid fa-bars" onclick="showMenu()"></i>
             </nav>
+        </section>
 
-            <div class="top container text-start">
-                <h1 class="title">Applications</h1>
-                <p></p>
-                <p class="subTitle">
-                    Rocker Industries’ solenoids and solenoid valves have
-                    accompanied presidents, astronauts, our men and women in
-                    uniform, and your family on vacation.
-                    <br />
-                    We are proud to have designed and manufactured solenoids and
-                    solenoid valves for all of the applications listed here:
+        <!-- HERO -->
+        <section class="hero-banner applications-hero">
+            <div class="hero-content reveal">
+                <p class="hero-eyebrow">Applications</p>
+                <h1 class="hero-headline">Mission-Critical Applications</h1>
+                <p class="hero-subhead">
+                    Engineered for Demanding Environments
+                </p>
+                <p class="hero-body">
+                    From aerospace and defense systems to commercial
+                    transportation platforms, Rocker Industries solenoids and
+                    solenoid valves are engineered for applications where
+                    precision, responsiveness, and reliability are essential.
+                </p>
+                <p class="hero-body">
+                    For decades, our products have supported mission-critical
+                    performance across some of the world’s most demanding
+                    operating environments.
                 </p>
             </div>
         </section>
 
-        <div class="app-type category container">
-            <div class="row">
-                <p class="title">Commercial Aircraft</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="">
-                        <img class="img-fluid" src="images/b777.jpg" alt="" />
+        <!-- COMMERCIAL AIRCRAFT -->
+        <section class="app-section app-section--white">
+            <div class="app-inner">
+                <div class="app-row reveal">
+                    <div class="app-media">
+                        <img src="images/b777.jpg" alt="" />
+                    </div>
+                    <div class="app-content">
+                        <h2 class="app-heading">Commercial Aircraft</h2>
+                        <p class="app-body">
+                            Our solenoids and solenoid valves support a wide
+                            range of commercial aircraft and business aviation
+                            platforms.
+                        </p>
+                        <ul class="cat-list">
+                            <li>
+                                <span class="label">Airbus:</span> A380, A350,
+                                A340, A330, A320, A319, A318, A310, A300
+                            </li>
+                            <li>
+                                <span class="label">Boeing:</span> B787, B777,
+                                B767, B757, B747, B737, B727, B717, B707
+                            </li>
+                            <li>
+                                <span class="label">Bombardier Learjet:</span>
+                                60, 55, 45, 40, 36, 35
+                            </li>
+                            <li>
+                                <span class="label">Cessna:</span> Citation
+                            </li>
+                            <li>
+                                <span class="label">Eclipse:</span> 500
+                            </li>
+                            <li>
+                                <span class="label">Embraer:</span> Phenom 300
+                            </li>
+                            <li>
+                                <span class="label">Falcon:</span> 20
+                            </li>
+                            <li>
+                                <span class="label">Fokker:</span> 100
+                            </li>
+                            <li>
+                                <span class="label">Gulfstream:</span> V
+                            </li>
+                            <li>
+                                <span class="label">Honda:</span> HA420
+                            </li>
+                            <li>
+                                <span class="label">Lockheed:</span>
+                                Constellation, L1011
+                            </li>
+                            <li>
+                                <span class="label">McDonnell Douglas:</span>
+                                MD95, MD90, MD80, MD11, DC10, DC9, DC8
+                            </li>
+                            <li>
+                                <span class="label">Raytheon:</span> Hawker 4000
+                            </li>
+                            <li>
+                                <span class="label">Saab:</span> 340
+                            </li>
+                            <li>
+                                <span class="label">Chinook:</span> 234
+                            </li>
+                            <li>
+                                <span class="label">Augusta Westland:</span>
+                                EH101
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="app-list col">
-                    <ul>
-                        <!-- <p class="list-title">Commerical Applications</p> -->
-                        <li>
-                            Airbus - A380, A350, A340, A330, A320, A319, A318,
-                            A310, A300
-                        </li>
-                        <li>
-                            Boeing - B787, B777, B767, B757, B747, B7737, B727,
-                            B717, B707
-                        </li>
-                        <li>Bombardier Learjet - 60, 55, 45, 40, 36, 35</li>
-                        <li>Cessna Citation</li>
-                        <li>Eclipse 500</li>
-                        <li>Embraer Phenom 300</li>
-                        <li>Falcon 20</li>
-                        <li>Fokker 100</li>
-                        <li>Gulfstream V</li>
-                        <li>Honda HA420</li>
-                        <li>Lockheed Constellation, L1011</li>
-                        <li>
-                            McDonnell Douglas - MD95, MD90, MD80, MD11, DC10,
-                            DC9, DC8
-                        </li>
-                        <li>Raytheon Hawker 4000</li>
-                        <li>Saab 340</li>
-                        <li>Chinook 234</li>
-                        <li>Augusta Westland EH101</li>
-                    </ul>
-                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="app-type category container">
-            <div class="row">
-                <p class="title">Military Aircraft</p>
-                <p class="subtitle">Fixed Wing</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="">
-                        <img class="img-fluid" src="images/b2.jpg" alt="" />
-                    </div>
-                </div>
-                <div class="app-list col">
-                    <ul>
-                        <!-- <p class="list-title">Military Applications</p> -->
-                        <li>
-                            <span class="craft-type">Attack bomber: </span>
-                            <span>
-                                AV6, AV7 AC130 H/U Gunship, AV8 Harrier, A50, B1
+        <!-- MILITARY AIRCRAFT — FIXED WING -->
+        <section class="app-section app-section--alt">
+            <div class="app-inner">
+                <div class="app-row app-row--reverse reveal">
+                    <div class="app-content">
+                        <h2 class="app-heading">Military Aircraft</h2>
+                        <p class="app-subhead">Fixed Wing</p>
+                        <ul class="cat-list">
+                            <li>
+                                <span class="label">Attack bomber:</span> AV6,
+                                AV7, AC130 H/U Gunship, AV8 Harrier, A50, B1
                                 Lancer, B2 Spirit, B52 Stratofortress, British
                                 Aerospace Nimrod MRA4
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Cargo: </span>
-                            <span>
-                                C5 Galaxy, C17 Globemaster III, C130 Hercules,
-                                Kawasaki C-X
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Drone: </span>
-                            <span> MQ-1B Predator, AV7 Global Hawk </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Electronic Mission: </span>
-                            <span> E2C Hawkeye 2000, EA-6B Prowler </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Fighter: </span>
-                            <span>
-                                F35 Lightning II, F22 Raptor, F117 Nighthawk,
-                                F/A18 E/F Super Hornet, F/A18 hornet, F16
-                                Fighting Falcon, F15E Strike Eagle, F15 Eagle,
-                                F5 Tiger II, F4 Phantom, F105 Thunderchief, F104
-                                Shooting Star
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Search & Rescue: </span>
-                            <span> HC130 Hercules, Kawasaki P-X </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Tanker: </span>
-                            <span> KC10 Extender </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Trainers: </span>
-                            <span>
-                                T38 Talon, T45 Goshawk, T50/KTX, Mitsubishi T2
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Unmanned fighter: </span>
-                            <span> X47A Pegasus </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Utility: </span>
-                            <span> U2, UC35 </span>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
-        <div class="app-type category container">
-            <div class="row">
-                <p class="subtitle">Rotary Wing</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="">
-                        <img class="img-fluid" src="images/bhawk.jpeg" alt="" />
+                            </li>
+                            <li>
+                                <span class="label">Cargo:</span> C5 Galaxy,
+                                C17 Globemaster III, C130 Hercules, Kawasaki
+                                C-X
+                            </li>
+                            <li>
+                                <span class="label">Drone:</span> MQ-1B
+                                Predator, AV7 Global Hawk
+                            </li>
+                            <li>
+                                <span class="label">Electronic Mission:</span>
+                                E2C Hawkeye 2000, EA-6B Prowler
+                            </li>
+                            <li>
+                                <span class="label">Fighter:</span> F35
+                                Lightning II, F22 Raptor, F117 Nighthawk, F/A18
+                                E/F Super Hornet, F/A18 Hornet, F16 Fighting
+                                Falcon, F15E Strike Eagle, F15 Eagle, F5 Tiger
+                                II, F4 Phantom, F105 Thunderchief, F104 Shooting
+                                Star
+                            </li>
+                            <li>
+                                <span class="label">Search &amp; Rescue:</span>
+                                HC130 Hercules, Kawasaki P-X
+                            </li>
+                            <li>
+                                <span class="label">Tanker:</span> KC10 Extender
+                            </li>
+                            <li>
+                                <span class="label">Trainers:</span> T38 Talon,
+                                T45 Goshawk, T50/KTX, Mitsubishi T2
+                            </li>
+                            <li>
+                                <span class="label">Unmanned fighter:</span>
+                                X47A Pegasus
+                            </li>
+                            <li>
+                                <span class="label">Utility:</span> U2, UC35
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="app-media">
+                        <img src="images/b2.jpg" alt="" />
                     </div>
                 </div>
-                <div class="app-list col">
-                    <ul>
-                        <li>
-                            <span class="craft-type">Anti Submarine: </span>
-                            <span> SH60 Seahawk, S58 Choctaw </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Attack: </span>
-                            <span> AH64 Apache </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Cargo: </span>
-                            <span>
-                                V22 Osprey, CH47 Chinook, CH53 Sea Stallion
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Multi Mission: </span>
-                            <span> MH60 Blackhawk, CH148 Cyclone </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Search & Rescue: </span>
-                            <span> HH60 Jayhawk </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Stealth: </span>
-                            <span> RAH66 Comanche </span>
-                        </li>
-                    </ul>
-                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="app-type category container">
-            <div class="row">
-                <p class="title">Military Ground and more</p>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <div class="">
-                        <img class="img-fluid" src="images/tank.jpg" alt="" />
+        <!-- MILITARY AIRCRAFT — ROTARY WING -->
+        <section class="app-section app-section--white">
+            <div class="app-inner">
+                <div class="app-row reveal">
+                    <div class="app-media">
+                        <img src="images/bhawk.jpeg" alt="" />
+                    </div>
+                    <div class="app-content">
+                        <h2 class="app-heading">Military Aircraft</h2>
+                        <p class="app-subhead">Rotary Wing</p>
+                        <ul class="cat-list cat-list--two-col">
+                            <li>
+                                <span class="label">Anti Submarine:</span> SH60
+                                Seahawk, SS8 Choctaw
+                            </li>
+                            <li>
+                                <span class="label">Attack:</span> AH64 Apache
+                            </li>
+                            <li>
+                                <span class="label">Cargo:</span> V22 Osprey,
+                                CH47 Chinook, CH53 Sea Stallion
+                            </li>
+                            <li>
+                                <span class="label">Multi Mission:</span> MH60
+                                Blackhawk, CH14B Cyclone
+                            </li>
+                            <li>
+                                <span class="label">Search &amp; Rescue:</span>
+                                HH60 Jayhawk
+                            </li>
+                            <li>
+                                <span class="label">Stealth:</span> RAH66
+                                Comanche
+                            </li>
+                        </ul>
                     </div>
                 </div>
-                <div class="app-list col">
-                    <ul>
-                        <p class="list-title"></p>
-                        <li>
-                            <span class="craft-type">Military Ground: </span>
-                            <span>
-                                M1 Abrams Tank, MLRS, Bradley Fighting
-                                Vehicle(Army), Expeditionary Fighting
-                                Vehicle(Marines); Polish, Finnish, Swiss
-                                Norwegian and Netherlands Infantry Fighting
-                                Vehicles
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Missiles: </span>
-                            <span>
-                                JDAM GBU 29, 30, 31, 32, MLRS M270A1, Missile
-                                Silo,
-                            </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Surface Ships: </span>
-                            <span>AAAV Landing Craft(Marines) </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Space: </span>
-                            <span> Atlas 5, Space Shuttle </span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Submarine: </span>
-                            <span>Seawolf Class Attack Submarines (SSN)</span>
-                        </li>
-                        <li>
-                            <span class="craft-type">Torpedoes: </span>
-                            <span> Mark IV </span>
-                        </li>
-                    </ul>
+            </div>
+        </section>
+
+        <!-- MILITARY GROUND AND MORE -->
+        <section class="app-section app-section--alt">
+            <div class="app-inner">
+                <div class="app-row app-row--reverse reveal">
+                    <div class="app-content">
+                        <h2 class="app-heading">Military Ground and More</h2>
+                        <ul class="cat-list cat-list--two-col">
+                            <li>
+                                <span class="label">Military Ground:</span> M1
+                                Abrams Tank, MLRS, Bradley Fighting Vehicle
+                                (Army), Expeditionary Fighting Vehicle
+                                (Marines), Polish Finnish Swiss Norwegian and
+                                Netherlands Infantry Fighting Vehicles
+                            </li>
+                            <li>
+                                <span class="label">Missiles:</span> JDAM GBU
+                                29, 30, 31, 32, MLRS M270A1, Missile Silo
+                            </li>
+                            <li>
+                                <span class="label">Surface Ships:</span> AAAV
+                                Landing Craft (Marines)
+                            </li>
+                            <li>
+                                <span class="label">Space:</span> Atlas 5,
+                                Space Shuttle
+                            </li>
+                            <li>
+                                <span class="label">Submarine:</span> Seawolf
+                                Class Attack Submarines (SSN)
+                            </li>
+                            <li>
+                                <span class="label">Torpedoes:</span> Mark IV
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="app-media">
+                        <img src="images/tank.jpg" alt="" />
+                    </div>
                 </div>
             </div>
-        </div>
+        </section>
 
-        <!-- FOOTER -->
+        <!-- CREDIBILITY BAR -->
+        <section class="credibility-bar">
+            <div class="credibility-inner reveal">
+                <h2>Trusted in the world’s most demanding applications.</h2>
+                <p>
+                    Engineered for performance. Built for reliability. Proven
+                    in service.
+                </p>
+            </div>
+        </section>
+
+        <!-- Footer (match solutions.html exactly) -->
         <div class="footer-basic">
             <footer>
                 <ul class="list-inline">
@@ -305,12 +827,8 @@
                             >Terms and Conditions</a
                         >
                     </li>
-                    <li class="list-inline-item">
-                        <a href="#">Quality</a>
-                    </li>
-                    <li class="list-inline-item">
-                        <a href="#">Contact</a>
-                    </li>
+                    <li class="list-inline-item"><a href="#">Quality</a></li>
+                    <li class="list-inline-item"><a href="#">Contact</a></li>
                     <li class="list-inline-item">
                         <a href="#">Supplier Portal</a>
                     </li>
@@ -318,8 +836,6 @@
                 <p class="copyright">Rocker Industries © 2022</p>
             </footer>
         </div>
-
-        <!-- Script for JS -->
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
@@ -345,6 +861,40 @@
             function hideMenu() {
                 navLinks.style.right = "-200px";
             }
+
+            (function () {
+                var prefersReduced =
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-reduced-motion: reduce)")
+                        .matches;
+                if (prefersReduced) return;
+
+                var els = Array.prototype.slice.call(
+                    document.querySelectorAll(".reveal, .app-section")
+                );
+                if (!("IntersectionObserver" in window)) {
+                    els.forEach(function (el) {
+                        el.classList.add("is-visible");
+                    });
+                    return;
+                }
+
+                var io = new IntersectionObserver(
+                    function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                io.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+                );
+
+                els.forEach(function (el) {
+                    io.observe(el);
+                });
+            })();
         </script>
     </body>
 </html>
