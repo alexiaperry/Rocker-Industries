@@ -179,6 +179,13 @@
                 text-align: center;
             }
 
+            /* Hero supporting line (slightly larger for scanability) */
+            .solutions-hero .main-text p {
+                font-size: clamp(0.9rem, 1.55vw, 1.15rem);
+                line-height: 1.45;
+                white-space: nowrap;
+            }
+
             /* Section 3 spacing tighten */
             .solutions-section--compact {
                 padding: clamp(28px, 3.8vw, 52px) 0;
@@ -222,6 +229,8 @@
                 grid-template-columns: 0.92fr 1.08fr;
                 gap: clamp(18px, 3.6vw, 46px);
                 align-items: start;
+                position: relative;
+                isolation: isolate;
             }
 
             .cepm-top {
@@ -233,14 +242,82 @@
                 margin-right: auto;
             }
 
+            .cepm-top + .cepm {
+                margin-top: clamp(18px, 2.8vw, 28px);
+            }
+
+            /* Extremely subtle blueprint linework for depth */
+            .cepm::before {
+                content: "";
+                position: absolute;
+                inset: -18px;
+                background-image: repeating-linear-gradient(
+                        0deg,
+                        rgba(11, 19, 36, 0.035) 0,
+                        rgba(11, 19, 36, 0.035) 1px,
+                        transparent 1px,
+                        transparent 24px
+                    ),
+                    repeating-linear-gradient(
+                        90deg,
+                        rgba(11, 19, 36, 0.028) 0,
+                        rgba(11, 19, 36, 0.028) 1px,
+                        transparent 1px,
+                        transparent 28px
+                    );
+                opacity: 0.55;
+                pointer-events: none;
+                z-index: -1;
+                mask-image: radial-gradient(
+                    circle at 20% 40%,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    rgba(0, 0, 0, 0.35) 55%,
+                    transparent 78%
+                );
+            }
+
+            /* A faint divider accent between image and copy */
+            .cepm::after {
+                content: "";
+                position: absolute;
+                top: 10px;
+                bottom: 10px;
+                left: calc(46.7% + 14px);
+                width: 1px;
+                background: linear-gradient(
+                    transparent,
+                    rgba(11, 19, 36, 0.08),
+                    rgba(83, 151, 234, 0.12),
+                    rgba(11, 19, 36, 0.06),
+                    transparent
+                );
+                pointer-events: none;
+                z-index: 0;
+            }
+
             .cepm-media {
-                border-radius: 22px;
+                border-radius: 16px;
                 overflow: hidden;
-                border: 1px solid rgba(11, 19, 36, 0.12);
-                background: #ffffff;
-                box-shadow: 0 18px 48px rgba(16, 24, 40, 0.16);
+                border: none;
+                background: rgba(11, 19, 36, 0.02);
+                box-shadow: 0 22px 58px rgba(11, 19, 36, 0.18);
                 aspect-ratio: 16 / 12;
                 max-height: 520px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .cepm-media::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(11, 19, 36, 0.12) 0%,
+                    rgba(11, 19, 36, 0) 42%,
+                    rgba(11, 19, 36, 0.18) 100%
+                );
+                pointer-events: none;
             }
 
             .cepm-media img {
@@ -267,7 +344,7 @@
             }
 
             .cepm-intro {
-                margin: 8px 0 0;
+                margin: 6px 0 0;
                 padding: 0;
                 color: rgba(11, 19, 36, 0.72);
                 font-size: 15px;
@@ -279,12 +356,23 @@
                 margin-top: 18px;
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 18px;
+                gap: 22px;
             }
 
             .cepm-path {
                 padding-left: 14px;
                 border-left: 2px solid rgba(83, 151, 234, 0.35);
+                position: relative;
+                z-index: 1;
+            }
+
+            .cepm-label {
+                display: inline-block;
+                font-size: 11px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: rgba(11, 19, 36, 0.55);
+                margin: 0 0 10px;
             }
 
             .cepm-title {
@@ -307,98 +395,192 @@
 
             /* capability tags removed */
 
-            /* Section 2: product split cards */
-            .product-stack {
-                display: grid;
-                grid-template-columns: 1fr;
-                gap: 18px;
-                margin-top: 22px;
-            }
-
-            .product-card {
-                background: rgba(255, 255, 255, 0.92);
-                border: 1px solid rgba(11, 19, 36, 0.1);
-                border-radius: 18px;
-                box-shadow: var(--shadow);
-                overflow: hidden;
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-            }
-
-            .product-card:hover {
-                transform: translateY(-5px);
-                box-shadow: var(--shadow-hover);
-            }
-
-            .product-grid {
-                display: grid;
-                grid-template-columns: 1.1fr 0.9fr;
-                gap: clamp(16px, 3vw, 30px);
-                align-items: center;
-                padding: clamp(18px, 2.7vw, 28px);
-            }
-
-            .product-title {
-                margin: 0 0 10px;
-                color: var(--ink);
-                font-weight: 800;
-                font-size: clamp(1.15rem, 2vw, 1.45rem);
-                line-height: 1.2;
-                letter-spacing: 0.01em;
-            }
-
-            .product-lead {
-                margin: 0 0 12px;
+            /* Section 2: product solutions (editorial dark panels + cinematic imagery) */
+            .product-subtitle {
+                margin: 10px auto 0;
+                max-width: 70ch;
                 padding: 0;
-                color: #4b4c4d;
+                text-align: center;
+                color: rgba(11, 19, 36, 0.72);
                 font-size: 15.5px;
                 line-height: 1.8em;
             }
 
-            .product-list {
-                margin: 0;
-                padding-left: 18px;
-                color: #4b4c4d;
-                line-height: 1.75em;
-                font-size: 15.5px;
-            }
-
-            .product-media {
+            .product-features {
+                margin-top: 22px;
                 display: grid;
                 grid-template-columns: 1fr;
-                gap: 12px;
-                align-items: stretch;
+                gap: 18px;
             }
 
-            .product-media .main {
-                border-radius: var(--radius-lg);
+            .product-feature {
+                border-radius: 22px;
                 overflow: hidden;
-                border: 1px solid rgba(11, 19, 36, 0.12);
-                box-shadow: 0 18px 48px rgba(16, 24, 40, 0.16);
+                border: 1px solid rgba(11, 19, 36, 0.1);
+                box-shadow: 0 22px 56px rgba(11, 19, 36, 0.14);
                 background: #ffffff;
-                aspect-ratio: 16 / 10;
+                display: grid;
+                grid-template-columns: 0.95fr 1.05fr;
+                min-height: clamp(340px, 38vw, 440px);
+                position: relative;
+                isolation: isolate;
             }
 
-            .product-media .thumb {
-                border-radius: var(--radius-lg);
+            .product-feature--reverse {
+                grid-template-columns: 1.05fr 0.95fr;
+            }
+
+            .product-panel {
+                position: relative;
+                padding: clamp(20px, 3vw, 30px);
+                background: linear-gradient(135deg, #0b1324 0%, #122a4a 100%);
+                color: rgba(255, 255, 255, 0.92);
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                z-index: 1;
+            }
+
+            .product-panel::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: repeating-linear-gradient(
+                        0deg,
+                        rgba(255, 255, 255, 0.06) 0,
+                        rgba(255, 255, 255, 0.06) 1px,
+                        transparent 1px,
+                        transparent 22px
+                    ),
+                    repeating-linear-gradient(
+                        90deg,
+                        rgba(255, 255, 255, 0.045) 0,
+                        rgba(255, 255, 255, 0.045) 1px,
+                        transparent 1px,
+                        transparent 26px
+                    );
+                opacity: 0.22;
+                pointer-events: none;
+                mask-image: radial-gradient(
+                    circle at 30% 30%,
+                    rgba(0, 0, 0, 0.9) 0%,
+                    rgba(0, 0, 0, 0.34) 55%,
+                    transparent 78%
+                );
+            }
+
+            .product-panel > * {
+                position: relative;
+                z-index: 1;
+            }
+
+            .product-kicker {
+                font-size: 11px;
+                letter-spacing: 0.18em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.64);
+                margin: 0 0 10px;
+            }
+
+            .product-heading {
+                margin: 0 0 10px;
+                font-weight: 820;
+                font-size: clamp(1.15rem, 2vw, 1.45rem);
+                line-height: 1.2;
+                letter-spacing: 0.01em;
+                color: rgba(255, 255, 255, 0.96);
+            }
+
+            .product-body {
+                margin: 0;
+                padding: 0;
+                color: rgba(255, 255, 255, 0.84);
+                line-height: 1.8em;
+                font-size: 15px;
+                max-width: 56ch;
+            }
+
+            .product-tags {
+                margin: 14px 0 0;
+                padding: 0;
+                list-style: none;
+                display: flex;
+                flex-wrap: wrap;
+                gap: 10px 10px;
+                max-width: 62ch;
+            }
+
+            .product-tags li {
+                display: inline-flex;
+                align-items: center;
+                padding: 7px 10px;
+                border-radius: 10px;
+                border: 1px solid rgba(255, 255, 255, 0.16);
+                background: rgba(255, 255, 255, 0.06);
+                color: rgba(255, 255, 255, 0.82);
+                font-size: 13.5px;
+                line-height: 1.2;
+                letter-spacing: 0.01em;
+            }
+
+            .product-visual {
+                position: relative;
                 overflow: hidden;
-                border: 1px solid rgba(11, 19, 36, 0.12);
-                background: #ffffff;
-                aspect-ratio: 16 / 8;
-                box-shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
-                opacity: 0.92;
-                transition: opacity 200ms ease, transform 200ms ease;
+                background: #0b1324;
             }
 
-            .product-card:hover .product-media .thumb {
-                opacity: 1;
-                transform: translateY(-1px);
+            .product-visual::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(11, 19, 36, 0.28) 0%,
+                    rgba(11, 19, 36, 0.06) 40%,
+                    rgba(11, 19, 36, 0.36) 100%
+                );
+                z-index: 1;
+                pointer-events: none;
             }
 
-            .product-media img {
+            .product-visual img.main {
+                position: absolute;
+                inset: 0;
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 display: block;
+                border-radius: 0;
+                box-shadow: none;
+                transform: scale(1.02);
+                filter: saturate(1.02) contrast(1.02);
+                transition: transform 360ms ease;
+            }
+
+            .product-feature:hover .product-visual img.main {
+                transform: scale(1.06);
+            }
+
+            .product-visual img.thumb {
+                position: absolute;
+                right: clamp(14px, 2vw, 18px);
+                bottom: clamp(14px, 2vw, 18px);
+                width: min(180px, 42%);
+                aspect-ratio: 16 / 10;
+                height: auto;
+                object-fit: cover;
+                border-radius: 14px;
+                border: 1px solid rgba(255, 255, 255, 0.18);
+                box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
+                opacity: 0.9;
+                z-index: 2;
+                transition: opacity 200ms ease, transform 200ms ease;
+                transform: translateY(0);
+            }
+
+            .product-feature:hover .product-visual img.thumb {
+                opacity: 1;
+                transform: translateY(-2px);
             }
 
             /* Section 3: premium/simple text */
@@ -502,6 +684,9 @@
 
             @media (prefers-reduced-motion: reduce) {
                 .cepm-media img,
+                .product-feature,
+                .product-visual img.main,
+                .product-visual img.thumb,
                 .product-card,
                 .cap-card,
                 .product-card:hover .product-media .thumb,
@@ -519,11 +704,25 @@
                 .cepm {
                     grid-template-columns: 1fr;
                 }
+                .cepm::after {
+                    content: none;
+                }
                 .cepm-media {
                     aspect-ratio: 16 / 10;
                 }
-                .product-grid {
+                .product-feature,
+                .product-feature--reverse {
                     grid-template-columns: 1fr;
+                }
+                .product-feature {
+                    min-height: unset;
+                }
+                .product-visual {
+                    min-height: 240px;
+                }
+                .product-visual img.main {
+                    max-height: 320px;
+                    width: 100%;
                 }
                 .cap-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -573,12 +772,8 @@
             <div class="main-text reveal">
                 <h1>Custom Solenoid and Solenoid Valve Solutions</h1>
                 <p>
-                    Rocker Industries designs and manufactures precision solenoids
-                    and solenoid valves for aerospace, defense, and commercial
-                    applications. From custom-engineered designs to build-to-print
-                    production, we support demanding applications with responsive
-                    engineering, rapid prototyping, in-house testing, and AS9100 /
-                    ISO 9001 certified quality systems.
+                    Precision-engineered solenoids and solenoid valves for aerospace,
+                    defense, and commercial applications.
                 </p>
 
                 <div class="solutions-cta-row">
@@ -616,6 +811,7 @@
                     <div>
                         <div class="cepm-paths">
                             <div class="cepm-path">
+                                <div class="cepm-label">Engineering Support</div>
                                 <h3 class="cepm-title">
                                     Custom Design &amp; Development
                                 </h3>
@@ -629,6 +825,9 @@
                             </div>
 
                             <div class="cepm-path">
+                                <div class="cepm-label">
+                                    Precision Manufacturing
+                                </div>
                                 <h3 class="cepm-title">
                                     Build-to-Print Manufacturing
                                 </h3>
@@ -650,62 +849,60 @@
         <section class="solutions-section">
             <div class="solutions-inner">
                 <h2 class="solutions-title reveal">Product Solutions</h2>
+                <p class="product-subtitle reveal">
+                    Engineered for demanding aerospace, defense, and commercial
+                    applications.
+                </p>
 
-                <div class="product-stack">
-                    <article class="product-card reveal" id="solenoids">
-                        <div class="product-grid">
-                            <div>
-                                <h3 class="product-title">Solenoids</h3>
-                                <p class="product-lead">
-                                    Rocker manufactures a wide range of solenoids
-                                    for actuation needs, including:
-                                </p>
-                                <ul class="product-list">
-                                    <li>Single and multiple coil solenoids</li>
-                                    <li>Pressurized and non-pressurized solenoids</li>
-                                    <li>Mechanical and ball latching solenoids</li>
-                                    <li>Current-switching solenoids</li>
-                                    <li>Rectified VAC solenoids</li>
-                                    <li>PWM solenoids</li>
-                                </ul>
-                            </div>
-                            <div class="product-media" aria-hidden="true">
-                                <div class="main">
-                                    <img src="images/sol2.jpg" alt="" />
-                                </div>
-                                <div class="thumb">
-                                    <img src="images/sol3.jpg" alt="" />
-                                </div>
-                            </div>
+                <div class="product-features">
+                    <article class="product-feature reveal" id="solenoids">
+                        <div class="product-panel">
+                            <div class="product-kicker">Product Family</div>
+                            <h3 class="product-heading">Solenoids</h3>
+                            <p class="product-body">
+                                Rocker manufactures a wide range of solenoids for
+                                actuation needs, including custom and
+                                production-ready configurations for demanding
+                                applications.
+                            </p>
+                            <ul class="product-tags">
+                                <li>Single &amp; multiple coil solenoids</li>
+                                <li>Pressurized &amp; non-pressurized designs</li>
+                                <li>Mechanical &amp; ball latching solenoids</li>
+                                <li>
+                                    Current-switching, rectified VAC &amp; PWM
+                                    options
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="product-visual" aria-hidden="true">
+                            <img class="main" src="images/sol2.jpg" alt="" />
+                            <img class="thumb" src="images/sol3.jpg" alt="" />
                         </div>
                     </article>
 
-                    <article class="product-card reveal" id="valves">
-                        <div class="product-grid">
-                            <div>
-                                <h3 class="product-title">Solenoid Valves</h3>
-                                <p class="product-lead">
-                                    Rocker designs and manufactures hydraulic,
-                                    fuel, pneumatic, and Skydrol-compatible
-                                    solenoid valves, including:
-                                </p>
-                                <ul class="product-list">
-                                    <li>Two-way, three-way, and four-port designs</li>
-                                    <li>Pilot operated valves</li>
-                                    <li>Poppet and spool valves</li>
-                                    <li>Latching valve designs</li>
-                                    <li>Cartridge and inline valves</li>
-                                    <li>High-temperature applications</li>
-                                </ul>
-                            </div>
-                            <div class="product-media" aria-hidden="true">
-                                <div class="main">
-                                    <img src="images/sol5.jpg" alt="" />
-                                </div>
-                                <div class="thumb">
-                                    <img src="images/sol6.jpg" alt="" />
-                                </div>
-                            </div>
+                    <article class="product-feature product-feature--reverse reveal" id="valves">
+                        <div class="product-visual" aria-hidden="true">
+                            <img class="main" src="images/sol5.jpg" alt="" />
+                            <img class="thumb" src="images/sol6.jpg" alt="" />
+                        </div>
+                        <div class="product-panel">
+                            <div class="product-kicker">Product Family</div>
+                            <h3 class="product-heading">Solenoid Valves</h3>
+                            <p class="product-body">
+                                Rocker designs and manufactures hydraulic, fuel,
+                                pneumatic, and Skydrol-compatible solenoid valves
+                                for aerospace, defense, and commercial
+                                applications.
+                            </p>
+                            <ul class="product-tags">
+                                <li>Two-way, three-way &amp; four-port designs</li>
+                                <li>Pilot operated, poppet &amp; spool valves</li>
+                                <li>Latching valve configurations</li>
+                                <li>
+                                    Cartridge, inline &amp; high-temperature designs
+                                </li>
+                            </ul>
                         </div>
                     </article>
                 </div>
