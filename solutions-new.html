@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Solutions • Rocker Industries</title>
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+        />
+        <link rel="stylesheet" href="index.css" />
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Finlandica&family=Open+Sans&family=Poppins:wght@100;200;400;600;700&family=Roboto:ital@1&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
+            integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://kit.fontawesome.com/f868733ea1.js"
+            crossorigin="anonymous"
+        ></script>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Barlow:wght@300&display=swap"
+            rel="stylesheet"
+        />
+
+        <style>
+            :root {
+                --ink: #0b1324;
+                --muted: rgba(11, 19, 36, 0.72);
+                --soft: #f4f6f8;
+                --line: rgba(11, 19, 36, 0.12);
+                --brand: #1e6091;
+                --accent-muted-blue: rgba(83, 151, 234, 0.9);
+                --shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
+                --shadow-hover: 0 22px 52px rgba(16, 24, 40, 0.14);
+                --radius-lg: 18px;
+                --radius-md: 14px;
+            }
+
+            /* Match About's navbar polish + mark Solutions active */
+            .header {
+                background: rgba(255, 255, 255, 0.88);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                box-shadow: 0 14px 30px rgba(11, 19, 36, 0.1);
+                border-bottom: 1px solid rgba(11, 19, 36, 0.08);
+            }
+
+            .nav-links ul li a {
+                position: relative;
+                transition: color 180ms ease, opacity 180ms ease;
+            }
+
+            .nav-links ul li a:hover {
+                color: #12305e;
+            }
+
+            /* Solutions is second item in nav list */
+            .nav-links ul li:nth-child(2) > a::after {
+                content: "";
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: -8px;
+                width: 72%;
+                height: 2px;
+                background: var(--accent-muted-blue);
+                border-radius: 999px;
+                box-shadow: 0 8px 20px rgba(83, 151, 234, 0.28);
+            }
+
+            /* Page layout helpers */
+            .solutions-section {
+                padding: clamp(44px, 6vw, 78px) 0;
+                background: #ffffff;
+            }
+
+            .solutions-section--alt {
+                background: var(--soft);
+            }
+
+            .solutions-section--tight-top {
+                padding-top: clamp(18px, 3vw, 38px);
+            }
+
+            .solutions-inner {
+                width: min(1120px, 93%);
+                margin: 0 auto;
+            }
+
+            .solutions-title {
+                margin: 0 0 12px;
+                color: var(--ink);
+                font-weight: 750;
+                font-size: clamp(1.35rem, 2.5vw, 2rem);
+                line-height: 1.2;
+                text-align: center;
+            }
+
+            .solutions-kicker {
+                margin: 0 auto;
+                max-width: 82ch;
+                text-align: center;
+                color: #4b4c4d;
+                font-size: 16px;
+                line-height: 1.85em;
+                padding: 0;
+            }
+
+            .solutions-hero {
+                position: relative;
+                min-height: clamp(294px, 39.2vh, 504px);
+                overflow: hidden;
+                background: linear-gradient(135deg, #0b1324 0%, #12305e 100%);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: clamp(40px, 6vw, 86px) 0;
+            }
+
+            .solutions-hero::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background-image: url("https://images.unsplash.com/photo-1517971071642-34a2d3ecc9cd?auto=format&fit=crop&w=2400&q=80");
+                background-size: cover;
+                background-position: center;
+                filter: saturate(1.02) contrast(1.02);
+                transform: scale(1.02);
+                z-index: 0;
+            }
+
+            .solutions-hero::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: linear-gradient(
+                    135deg,
+                    rgba(11, 19, 36, 0.92) 0%,
+                    rgba(18, 48, 94, 0.72) 55%,
+                    rgba(11, 19, 36, 0.86) 100%
+                );
+                z-index: 1;
+            }
+
+            .solutions-hero .main-text {
+                z-index: 2;
+                position: relative;
+                top: auto;
+                left: auto;
+                transform: none;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            /* Section 3 spacing tighten */
+            .solutions-section--compact {
+                padding: clamp(28px, 3.8vw, 52px) 0;
+            }
+
+            .solutions-cta-row {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 12px;
+                flex-wrap: wrap;
+                margin-top: 14px;
+            }
+
+            .solutions-btn-ghost {
+                display: inline-block;
+                padding: 10px 18px;
+                border-radius: 999px;
+                text-decoration: none;
+                color: #ffffff;
+                border: 1px solid rgba(255, 255, 255, 0.72);
+                background: rgba(255, 255, 255, 0.06);
+                transition: transform 160ms ease, filter 160ms ease,
+                    background 160ms ease, border-color 160ms ease;
+                letter-spacing: 0.01em;
+                backdrop-filter: blur(6px);
+            }
+
+            .solutions-btn-ghost:hover {
+                filter: brightness(1.05);
+                transform: translateY(-1px);
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.9);
+                color: #ffffff;
+            }
+
+            /* Section 1: two cards */
+            .solutions-two {
+                display: grid;
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+                gap: 18px;
+                margin-top: 22px;
+                align-items: stretch;
+            }
+
+            .solutions-card {
+                background: rgba(255, 255, 255, 0.92);
+                border: 1px solid rgba(11, 19, 36, 0.1);
+                border-radius: 16px;
+                box-shadow: var(--shadow);
+                overflow: hidden;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+                display: flex;
+                flex-direction: column;
+                min-height: 100%;
+            }
+
+            .solutions-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+            .solutions-card-media {
+                position: relative;
+                aspect-ratio: 16 / 9;
+                overflow: hidden;
+            }
+
+            .solutions-card-media img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+                transform: scale(1.01);
+                transition: transform 260ms ease, filter 260ms ease;
+            }
+
+            .solutions-card:hover .solutions-card-media img {
+                transform: scale(1.04);
+                filter: saturate(1.03);
+            }
+
+            .solutions-card-body {
+                padding: 22px 20px;
+            }
+
+            .solutions-card h3 {
+                margin: 0 0 10px;
+                font-size: 18.5px;
+                font-weight: 750;
+                color: rgba(30, 96, 145, 0.98);
+                letter-spacing: 0.01em;
+            }
+
+            .solutions-card p {
+                margin: 0;
+                padding: 0;
+                color: #4b4c4d;
+                line-height: 1.8em;
+                font-weight: 400;
+                font-size: 15.5px;
+            }
+
+            /* Section 2: product split cards */
+            .product-stack {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 18px;
+                margin-top: 22px;
+            }
+
+            .product-card {
+                background: rgba(255, 255, 255, 0.92);
+                border: 1px solid rgba(11, 19, 36, 0.1);
+                border-radius: 18px;
+                box-shadow: var(--shadow);
+                overflow: hidden;
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .product-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+            .product-grid {
+                display: grid;
+                grid-template-columns: 1.1fr 0.9fr;
+                gap: clamp(16px, 3vw, 30px);
+                align-items: center;
+                padding: clamp(18px, 2.7vw, 28px);
+            }
+
+            .product-title {
+                margin: 0 0 10px;
+                color: var(--ink);
+                font-weight: 800;
+                font-size: clamp(1.15rem, 2vw, 1.45rem);
+                line-height: 1.2;
+                letter-spacing: 0.01em;
+            }
+
+            .product-lead {
+                margin: 0 0 12px;
+                padding: 0;
+                color: #4b4c4d;
+                font-size: 15.5px;
+                line-height: 1.8em;
+            }
+
+            .product-list {
+                margin: 0;
+                padding-left: 18px;
+                color: #4b4c4d;
+                line-height: 1.75em;
+                font-size: 15.5px;
+            }
+
+            .product-media {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 12px;
+                align-items: stretch;
+            }
+
+            .product-media .main {
+                border-radius: var(--radius-lg);
+                overflow: hidden;
+                border: 1px solid rgba(11, 19, 36, 0.12);
+                box-shadow: 0 18px 48px rgba(16, 24, 40, 0.16);
+                background: #ffffff;
+                aspect-ratio: 16 / 10;
+            }
+
+            .product-media .thumb {
+                border-radius: var(--radius-lg);
+                overflow: hidden;
+                border: 1px solid rgba(11, 19, 36, 0.12);
+                background: #ffffff;
+                aspect-ratio: 16 / 8;
+                box-shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
+                opacity: 0.92;
+                transition: opacity 200ms ease, transform 200ms ease;
+            }
+
+            .product-card:hover .product-media .thumb {
+                opacity: 1;
+                transform: translateY(-1px);
+            }
+
+            .product-media img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                display: block;
+            }
+
+            /* Section 3: premium/simple text */
+            .solutions-text {
+                max-width: 86ch;
+                margin: 0 auto;
+                text-align: center;
+            }
+
+            .solutions-text p {
+                margin: 0;
+                padding: 0;
+                color: #4b4c4d;
+                font-size: 16px;
+                line-height: 1.9em;
+            }
+
+            .solutions-text p + p {
+                margin-top: 12px;
+            }
+
+            /* Section 4: 4 capability cards (match About capability cards feel) */
+            .cap-grid {
+                display: grid;
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                gap: 18px;
+                margin-top: 22px;
+            }
+
+            .cap-card {
+                background: rgba(255, 255, 255, 0.92);
+                border: 1px solid rgba(11, 19, 36, 0.1);
+                border-radius: 16px;
+                padding: 22px 20px;
+                box-shadow: var(--shadow);
+                transition: transform 0.2s ease, box-shadow 0.2s ease;
+            }
+
+            .cap-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-hover);
+            }
+
+            .cap-icon {
+                width: 52px;
+                height: 52px;
+                border-radius: 14px;
+                background: rgba(83, 151, 234, 0.14);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 0 14px;
+                color: rgba(47, 111, 163, 0.92);
+                transition: color 200ms ease, background 200ms ease,
+                    transform 200ms ease;
+            }
+
+            .cap-card:hover .cap-icon {
+                color: rgba(83, 151, 234, 0.98);
+                background: rgba(83, 151, 234, 0.2);
+                transform: translateY(-1px);
+            }
+
+            .cap-card h3 {
+                margin: 0 0 10px;
+                font-size: 18px;
+                font-weight: 750;
+                color: rgba(30, 96, 145, 0.98);
+                letter-spacing: 0.01em;
+            }
+
+            .cap-card p {
+                margin: 0;
+                padding: 0;
+                color: #4b4c4d;
+                line-height: 1.8em;
+                font-weight: 400;
+                font-size: 15.5px;
+            }
+
+            /* Final CTA */
+            .final-cta {
+                text-align: center;
+            }
+
+            .final-cta .solutions-kicker {
+                max-width: 72ch;
+            }
+
+            /* Subtle reveal animation */
+            .reveal {
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity 520ms ease, transform 520ms ease;
+            }
+
+            .reveal.is-visible {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+            @media (prefers-reduced-motion: reduce) {
+                .solutions-card,
+                .product-card,
+                .cap-card,
+                .solutions-card-media img,
+                .product-card:hover .product-media .thumb,
+                .reveal {
+                    transition: none !important;
+                }
+                .reveal {
+                    opacity: 1;
+                    transform: none;
+                }
+            }
+
+            /* Responsive */
+            @media (max-width: 980px) {
+                .solutions-two {
+                    grid-template-columns: 1fr;
+                }
+                .product-grid {
+                    grid-template-columns: 1fr;
+                }
+                .cap-grid {
+                    grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+            }
+
+            @media (max-width: 560px) {
+                .cap-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+        </style>
+    </head>
+
+    <body>
+        <!-- Navbar (match index.html exactly) -->
+        <section class="header">
+            <nav>
+                <div>
+                    <a href="index.html" class="logotext"
+                        ><img src="images/rocker-logo.png" alt=""
+                    /></a>
+                </div>
+
+                <div class="nav-links" id="navLinks">
+                    <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="quality.html">Quality</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li>
+                            <a href="http://supplierportal.rockerindustries.com/"
+                                >Supplier Portal</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+                <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+            </nav>
+        </section>
+
+        <!-- HERO SECTION -->
+        <section class="hero-banner solutions-hero">
+            <div class="main-text reveal">
+                <h1>Custom Solenoid and Solenoid Valve Solutions</h1>
+                <p>
+                    Rocker Industries designs and manufactures precision solenoids
+                    and solenoid valves for aerospace, defense, and commercial
+                    applications. From custom-engineered designs to build-to-print
+                    production, we support demanding applications with responsive
+                    engineering, rapid prototyping, in-house testing, and AS9100 /
+                    ISO 9001 certified quality systems.
+                </p>
+
+                <div class="solutions-cta-row">
+                    <a href="contact.html" class="learn-btn">Contact Our Team →</a>
+                    <a href="#capabilities" class="solutions-btn-ghost"
+                        >View Capabilities</a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 1 -->
+        <section class="solutions-section solutions-section--alt solutions-section--tight-top">
+            <div class="solutions-inner">
+                <h2 class="solutions-title reveal">Two Ways We Support Your Program</h2>
+
+                <div class="solutions-two">
+                    <article class="solutions-card reveal">
+                        <div class="solutions-card-media" aria-hidden="true">
+                            <img src="images/sol4.jpg" alt="" />
+                        </div>
+                        <div class="solutions-card-body">
+                            <h3>Custom Design &amp; Development</h3>
+                            <p>
+                                For new requirements, Rocker supports customers
+                                from specification review and concept development
+                                through analysis, prototyping, testing, and
+                                production.
+                            </p>
+                        </div>
+                    </article>
+
+                    <article class="solutions-card reveal">
+                        <div class="solutions-card-media" aria-hidden="true">
+                            <img src="images/machine.jpg" alt="" />
+                        </div>
+                        <div class="solutions-card-body">
+                            <h3>Build-to-Print Manufacturing</h3>
+                            <p>
+                                For established designs, Rocker manufactures to
+                                customer drawings, processes, and specifications
+                                with precision, quality, and consistency.
+                            </p>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section class="solutions-section">
+            <div class="solutions-inner">
+                <h2 class="solutions-title reveal">Product Solutions</h2>
+
+                <div class="product-stack">
+                    <article class="product-card reveal" id="solenoids">
+                        <div class="product-grid">
+                            <div>
+                                <h3 class="product-title">Solenoids</h3>
+                                <p class="product-lead">
+                                    Rocker manufactures a wide range of solenoids
+                                    for actuation needs, including:
+                                </p>
+                                <ul class="product-list">
+                                    <li>Single and multiple coil solenoids</li>
+                                    <li>Pressurized and non-pressurized solenoids</li>
+                                    <li>Mechanical and ball latching solenoids</li>
+                                    <li>Current-switching solenoids</li>
+                                    <li>Rectified VAC solenoids</li>
+                                    <li>PWM solenoids</li>
+                                </ul>
+                            </div>
+                            <div class="product-media" aria-hidden="true">
+                                <div class="main">
+                                    <img src="images/sol2.jpg" alt="" />
+                                </div>
+                                <div class="thumb">
+                                    <img src="images/sol3.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="product-card reveal" id="valves">
+                        <div class="product-grid">
+                            <div>
+                                <h3 class="product-title">Solenoid Valves</h3>
+                                <p class="product-lead">
+                                    Rocker designs and manufactures hydraulic,
+                                    fuel, pneumatic, and Skydrol-compatible
+                                    solenoid valves, including:
+                                </p>
+                                <ul class="product-list">
+                                    <li>Two-way, three-way, and four-port designs</li>
+                                    <li>Pilot operated valves</li>
+                                    <li>Poppet and spool valves</li>
+                                    <li>Latching valve designs</li>
+                                    <li>Cartridge and inline valves</li>
+                                    <li>High-temperature applications</li>
+                                </ul>
+                            </div>
+                            <div class="product-media" aria-hidden="true">
+                                <div class="main">
+                                    <img src="images/sol5.jpg" alt="" />
+                                </div>
+                                <div class="thumb">
+                                    <img src="images/sol6.jpg" alt="" />
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section class="solutions-section solutions-section--compact solutions-section--alt">
+            <div class="solutions-inner">
+                <h2 class="solutions-title reveal">Built Around Your Application</h2>
+                <div class="solutions-text reveal">
+                    <p>
+                        Every application has its own requirements for force,
+                        stroke, pressure, voltage, flow, response time,
+                        durability, size, weight, and operating environment.
+                    </p>
+                    <p>
+                        Rocker works closely with customers to match the right
+                        solenoid or solenoid valve configuration to the
+                        application.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 -->
+        <section class="solutions-section solutions-section--alt" id="capabilities">
+            <div class="solutions-inner">
+                <h2 class="solutions-title reveal">Engineering &amp; Program Support</h2>
+
+                <div class="cap-grid">
+                    <article class="cap-card reveal">
+                        <div class="cap-icon" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M4 19V5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v14H4Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M8 7h8"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M8 11h8"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M8 15h5"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Engineering Analysis</h3>
+                        <p>
+                            Detailed analysis and reports are available to
+                            support customer design reviews and custom
+                            specification projects.
+                        </p>
+                    </article>
+
+                    <article class="cap-card reveal">
+                        <div class="cap-icon" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M7 17h10"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M9 3h6v6H9V3Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M8 21v-6a4 4 0 0 1 4-4h0a4 4 0 0 1 4 4v6"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Rapid Prototyping</h3>
+                        <p>
+                            Lean design practices, in-house machining, and
+                            supplier partnerships help accelerate prototype
+                            development and turnaround times.
+                        </p>
+                    </article>
+
+                    <article class="cap-card reveal">
+                        <div class="cap-icon" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M4 20V8l8-4 8 4v12H4Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M8 12h8"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                                <path
+                                    d="M8 16h5"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </div>
+                        <h3>In-House Testing</h3>
+                        <p>
+                            Testing capabilities include proof pressure, flow
+                            rate, pressure drop, force, thermal, environmental,
+                            response time, life cycle, and electrical testing.
+                        </p>
+                    </article>
+
+                    <article class="cap-card reveal">
+                        <div class="cap-icon" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                width="24"
+                                height="24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M9 12l2 2 4-4"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
+                        <h3>Quality Assurance</h3>
+                        <p>
+                            AS9100 and ISO 9001 certified systems support
+                            demanding aerospace and defense program requirements.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FINAL CTA SECTION -->
+        <section class="solutions-section">
+            <div class="solutions-inner final-cta">
+                <h2 class="solutions-title reveal">
+                    Need a Custom Solenoid or Solenoid Valve Solution?
+                </h2>
+                <p class="solutions-kicker reveal">
+                    Contact Rocker Industries to discuss your application,
+                    drawing package, or program requirements.
+                </p>
+                <div style="margin-top: 16px" class="reveal">
+                    <a href="contact.html" class="learn-btn"
+                        >Contact Rocker Industries →</a
+                    >
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer (match index.html exactly) -->
+        <div class="footer-basic">
+            <footer>
+                <ul class="list-inline">
+                    <li class="list-inline-item"><a href="index.html">Home</a></li>
+                    <li class="list-inline-item">
+                        <a
+                            href="http://www.rockerindustries.com/Downloads/TCs_Rev_1_UPDATED_1.17.pdf"
+                            >Terms and Conditions</a
+                        >
+                    </li>
+                    <li class="list-inline-item"><a href="#">Quality</a></li>
+                    <li class="list-inline-item"><a href="#">Contact</a></li>
+                    <li class="list-inline-item">
+                        <a href="#">Supplier Portal</a>
+                    </li>
+                </ul>
+                <p class="copyright">Rocker Industries © 2022</p>
+            </footer>
+        </div>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"
+        ></script>
+
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0";
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px";
+            }
+
+            (function () {
+                var prefersReduced =
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+                if (prefersReduced) return;
+
+                var els = Array.prototype.slice.call(
+                    document.querySelectorAll(".reveal")
+                );
+                if (!("IntersectionObserver" in window)) {
+                    els.forEach(function (el) {
+                        el.classList.add("is-visible");
+                    });
+                    return;
+                }
+
+                var io = new IntersectionObserver(
+                    function (entries) {
+                        entries.forEach(function (entry) {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add("is-visible");
+                                io.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.12, rootMargin: "0px 0px -8% 0px" }
+                );
+
+                els.forEach(function (el) {
+                    io.observe(el);
+                });
+            })();
+        </script>
+    </body>
+</html>
+
