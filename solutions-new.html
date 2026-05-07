@@ -338,8 +338,8 @@
                 margin: 0;
                 color: var(--ink);
                 font-weight: 760;
-                font-size: clamp(1.18rem, 2vw, 1.62rem);
-                line-height: 1.18;
+                font-size: clamp(1.35rem, 2.5vw, 2rem);
+                line-height: 1.2;
                 letter-spacing: 0.01em;
             }
 
@@ -391,13 +391,14 @@
                 font-weight: 400;
                 font-size: 15px;
                 max-width: 74ch;
+                text-align: left;
             }
 
             /* capability tags removed */
 
-            /* Section 2: product solutions (editorial dark panels + cinematic imagery) */
+            /* Section 2: product solutions (light editorial layout) */
             .product-subtitle {
-                margin: 10px auto 0;
+                margin: 6px auto 0;
                 max-width: 70ch;
                 padding: 0;
                 text-align: center;
@@ -407,34 +408,39 @@
             }
 
             .product-features {
-                margin-top: 22px;
+                margin-top: 16px;
                 display: grid;
                 grid-template-columns: 1fr;
                 gap: 18px;
             }
 
             .product-feature {
-                border-radius: 22px;
-                overflow: hidden;
-                border: 1px solid rgba(11, 19, 36, 0.1);
-                box-shadow: 0 22px 56px rgba(11, 19, 36, 0.14);
-                background: #ffffff;
+                border-radius: 0;
+                overflow: visible;
+                border: none;
+                box-shadow: none;
+                background: transparent;
                 display: grid;
-                grid-template-columns: 0.95fr 1.05fr;
+                grid-template-columns: 1fr 1fr;
                 min-height: clamp(340px, 38vw, 440px);
                 position: relative;
                 isolation: isolate;
             }
 
             .product-feature--reverse {
-                grid-template-columns: 1.05fr 0.95fr;
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .product-feature + .product-feature {
+                padding-top: clamp(14px, 2.2vw, 22px);
+                border-top: 1px solid rgba(11, 19, 36, 0.1);
             }
 
             .product-panel {
                 position: relative;
                 padding: clamp(20px, 3vw, 30px);
-                background: linear-gradient(135deg, #0b1324 0%, #122a4a 100%);
-                color: rgba(255, 255, 255, 0.92);
+                background: rgba(255, 255, 255, 0.96);
+                color: var(--ink);
                 display: flex;
                 flex-direction: column;
                 justify-content: center;
@@ -442,31 +448,7 @@
             }
 
             .product-panel::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background-image: repeating-linear-gradient(
-                        0deg,
-                        rgba(255, 255, 255, 0.06) 0,
-                        rgba(255, 255, 255, 0.06) 1px,
-                        transparent 1px,
-                        transparent 22px
-                    ),
-                    repeating-linear-gradient(
-                        90deg,
-                        rgba(255, 255, 255, 0.045) 0,
-                        rgba(255, 255, 255, 0.045) 1px,
-                        transparent 1px,
-                        transparent 26px
-                    );
-                opacity: 0.22;
-                pointer-events: none;
-                mask-image: radial-gradient(
-                    circle at 30% 30%,
-                    rgba(0, 0, 0, 0.9) 0%,
-                    rgba(0, 0, 0, 0.34) 55%,
-                    transparent 78%
-                );
+                content: none;
             }
 
             .product-panel > * {
@@ -478,7 +460,7 @@
                 font-size: 11px;
                 letter-spacing: 0.18em;
                 text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.64);
+                color: rgba(11, 19, 36, 0.62);
                 margin: 0 0 10px;
             }
 
@@ -488,99 +470,66 @@
                 font-size: clamp(1.15rem, 2vw, 1.45rem);
                 line-height: 1.2;
                 letter-spacing: 0.01em;
-                color: rgba(255, 255, 255, 0.96);
+                color: rgba(30, 96, 145, 0.98);
             }
 
             .product-body {
                 margin: 0;
                 padding: 0;
-                color: rgba(255, 255, 255, 0.84);
+                color: #4b4c4d;
                 line-height: 1.8em;
                 font-size: 15px;
                 max-width: 56ch;
             }
 
-            .product-tags {
+            .product-list {
                 margin: 14px 0 0;
-                padding: 0;
-                list-style: none;
-                display: flex;
-                flex-wrap: wrap;
-                gap: 10px 10px;
-                max-width: 62ch;
+                padding-left: 18px;
+                color: #4b4c4d;
+                line-height: 1.75em;
+                font-size: 15px;
             }
 
-            .product-tags li {
-                display: inline-flex;
-                align-items: center;
-                padding: 7px 10px;
-                border-radius: 10px;
-                border: 1px solid rgba(255, 255, 255, 0.16);
-                background: rgba(255, 255, 255, 0.06);
-                color: rgba(255, 255, 255, 0.82);
-                font-size: 13.5px;
-                line-height: 1.2;
-                letter-spacing: 0.01em;
+            .product-list li + li {
+                margin-top: 6px;
             }
 
             .product-visual {
                 position: relative;
-                overflow: hidden;
-                background: #0b1324;
+                overflow: visible;
+                background: transparent;
+                display: block;
+                padding: 0;
+                align-self: center;
             }
 
             .product-visual::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(
-                    135deg,
-                    rgba(11, 19, 36, 0.28) 0%,
-                    rgba(11, 19, 36, 0.06) 40%,
-                    rgba(11, 19, 36, 0.36) 100%
-                );
-                z-index: 1;
-                pointer-events: none;
+                content: none;
             }
 
             .product-visual img.main {
-                position: absolute;
-                inset: 0;
+                position: relative;
                 width: 100%;
-                height: 100%;
+                height: clamp(260px, 28vw, 360px);
                 object-fit: cover;
                 display: block;
-                border-radius: 0;
+                border-radius: 18px;
                 box-shadow: none;
-                transform: scale(1.02);
+                transform: none;
                 filter: saturate(1.02) contrast(1.02);
-                transition: transform 360ms ease;
+                transition: transform 360ms ease, filter 360ms ease;
             }
 
             .product-feature:hover .product-visual img.main {
-                transform: scale(1.06);
+                transform: scale(1.015);
             }
 
-            .product-visual img.thumb {
-                position: absolute;
-                right: clamp(14px, 2vw, 18px);
-                bottom: clamp(14px, 2vw, 18px);
-                width: min(180px, 42%);
-                aspect-ratio: 16 / 10;
-                height: auto;
-                object-fit: cover;
-                border-radius: 14px;
-                border: 1px solid rgba(255, 255, 255, 0.18);
-                box-shadow: 0 18px 44px rgba(0, 0, 0, 0.35);
-                opacity: 0.9;
-                z-index: 2;
-                transition: opacity 200ms ease, transform 200ms ease;
-                transform: translateY(0);
+            .product-panel {
+                border-right: none;
             }
 
-            .product-feature:hover .product-visual img.thumb {
-                opacity: 1;
-                transform: translateY(-2px);
+            .product-feature--reverse .product-panel {
+                border-left: none;
             }
 
             /* Section 3: premium/simple text */
@@ -686,7 +635,6 @@
                 .cepm-media img,
                 .product-feature,
                 .product-visual img.main,
-                .product-visual img.thumb,
                 .product-card,
                 .cap-card,
                 .product-card:hover .product-media .thumb,
@@ -723,6 +671,12 @@
                 .product-visual img.main {
                     max-height: 320px;
                     width: 100%;
+                }
+                .product-panel,
+                .product-feature--reverse .product-panel {
+                    border-left: none;
+                    border-right: none;
+                    border-bottom: 1px solid rgba(11, 19, 36, 0.08);
                 }
                 .cap-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -846,7 +800,7 @@
         </section>
 
         <!-- SECTION 2 -->
-        <section class="solutions-section">
+        <section class="solutions-section solutions-section--tight-top">
             <div class="solutions-inner">
                 <h2 class="solutions-title reveal">Product Solutions</h2>
                 <p class="product-subtitle reveal">
@@ -865,7 +819,7 @@
                                 production-ready configurations for demanding
                                 applications.
                             </p>
-                            <ul class="product-tags">
+                            <ul class="product-list">
                                 <li>Single &amp; multiple coil solenoids</li>
                                 <li>Pressurized &amp; non-pressurized designs</li>
                                 <li>Mechanical &amp; ball latching solenoids</li>
@@ -877,15 +831,10 @@
                         </div>
                         <div class="product-visual" aria-hidden="true">
                             <img class="main" src="images/sol2.jpg" alt="" />
-                            <img class="thumb" src="images/sol3.jpg" alt="" />
                         </div>
                     </article>
 
-                    <article class="product-feature product-feature--reverse reveal" id="valves">
-                        <div class="product-visual" aria-hidden="true">
-                            <img class="main" src="images/sol5.jpg" alt="" />
-                            <img class="thumb" src="images/sol6.jpg" alt="" />
-                        </div>
+                    <article class="product-feature reveal" id="valves">
                         <div class="product-panel">
                             <div class="product-kicker">Product Family</div>
                             <h3 class="product-heading">Solenoid Valves</h3>
@@ -895,7 +844,7 @@
                                 for aerospace, defense, and commercial
                                 applications.
                             </p>
-                            <ul class="product-tags">
+                            <ul class="product-list">
                                 <li>Two-way, three-way &amp; four-port designs</li>
                                 <li>Pilot operated, poppet &amp; spool valves</li>
                                 <li>Latching valve configurations</li>
@@ -903,6 +852,9 @@
                                     Cartridge, inline &amp; high-temperature designs
                                 </li>
                             </ul>
+                        </div>
+                        <div class="product-visual" aria-hidden="true">
+                            <img class="main" src="images/sol5.jpg" alt="" />
                         </div>
                     </article>
                 </div>
