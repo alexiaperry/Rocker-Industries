@@ -101,7 +101,7 @@
                 background-color: #0a1628;
                 background-image: url("images/Hero-1.png");
                 background-repeat: no-repeat;
-                background-position: right center;
+                background-position: calc(100% + 30%) center;
                 background-size: 75% auto;
                 display: flex;
                 align-items: center;
@@ -399,7 +399,21 @@
 
             .fixed-wing-grid .cat-list {
                 margin-top: 0;
-                gap: 12px;
+                gap: 4px;
+            }
+
+            .fixed-wing-grid .cat-list li {
+                line-height: 1.32;
+                font-size: 14.5px;
+            }
+
+            .cat-list .label {
+                color: var(--brand);
+                font-weight: 700;
+            }
+
+            .fixed-wing-grid .cat-list li::before {
+                top: 5px;
             }
 
             /* ============================================
@@ -408,7 +422,7 @@
             .credibility-bar {
                 background: var(--ink);
                 color: #ffffff;
-                padding: clamp(38px, 5.2vw, 67px) 0;
+                padding: clamp(19px, 2.6vw, 34px) 0;
                 text-align: center;
                 position: relative;
                 overflow: hidden;
@@ -454,16 +468,16 @@
                 margin: 0;
                 color: #ffffff;
                 font-weight: 720;
-                font-size: clamp(1.4rem, 2.6vw, 2.05rem);
+                font-size: clamp(1.05rem, 1.95vw, 1.54rem);
                 line-height: 1.25;
                 letter-spacing: -0.005em;
             }
 
             .credibility-bar p {
-                margin: 16px 0 0;
+                margin: 8px 0 0;
                 color: rgba(255, 255, 255, 0.78);
-                font-size: clamp(0.95rem, 1.3vw, 1.05rem);
-                line-height: 1.7;
+                font-size: clamp(0.9rem, 0.975vw, 1.05rem);
+                line-height: 1.6;
                 font-weight: 400;
                 letter-spacing: 0.005em;
             }
@@ -599,7 +613,6 @@
         <!-- HERO -->
         <section class="hero-banner applications-hero">
             <div class="hero-content reveal">
-                <p class="hero-eyebrow">Applications</p>
                 <h1 class="hero-headline">Mission-Critical Applications</h1>
                 <p class="hero-subhead">
                     Engineered for Demanding Environments
