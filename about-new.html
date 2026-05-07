@@ -105,6 +105,14 @@
                 padding-top: clamp(4px, 0.65vw, 7px);
             }
 
+            .about-section--tight-bottom {
+                padding-bottom: clamp(25px, 3.45vw, 41px);
+            }
+
+            .about-section--tight-top-half {
+                padding-top: clamp(22px, 3vw, 36px);
+            }
+
             .about-section--more-bottom {
                 padding-bottom: clamp(20px, 2.4vw, 29px);
             }
@@ -129,6 +137,47 @@
 
             .about-section--core .about-title {
                 margin-bottom: 12px;
+            }
+
+            .about-section--core .about-grid-6 {
+                margin-top: 16px;
+            }
+
+            .about-section--core .about-card {
+                padding: 26px 22px;
+                border-radius: 16px;
+                border: 1px solid rgba(11, 19, 36, 0.1);
+                box-shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
+            }
+
+            .about-section--core .about-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 22px 52px rgba(16, 24, 40, 0.14);
+            }
+
+            .about-section--core .about-icon {
+                margin-bottom: 18px;
+                color: rgba(47, 111, 163, 0.92);
+                background: rgba(83, 151, 234, 0.14);
+                transition: color 200ms ease, background 200ms ease,
+                    transform 200ms ease;
+            }
+
+            .about-section--core .about-card:hover .about-icon {
+                color: rgba(83, 151, 234, 0.98);
+                background: rgba(83, 151, 234, 0.2);
+                transform: translateY(-1px);
+            }
+
+            .about-section--core .about-card h3 {
+                margin-bottom: 12px;
+                font-size: 18.5px;
+                color: rgba(30, 96, 145, 0.98);
+            }
+
+            .about-section--core .about-card p {
+                font-size: 15.5px;
+                line-height: 1.75em;
             }
 
             .about-body {
@@ -499,7 +548,7 @@
 
         <!-- CORE CAPABILITIES SECTION -->
         <section
-            class="about-section about-section--title-left about-section--tight-top about-section--core"
+            class="about-section about-section--title-left about-section--tight-top about-section--tight-bottom about-section--core"
         >
             <div class="about-inner">
                 <h2 class="about-title">Core Capabilities</h2>
@@ -679,7 +728,7 @@
                         </div>
                         <h3>In-House Testing</h3>
                         <p>
-                            Comprehensive testing capabilities including proof
+                            Comprehensive testing including proof
                             pressure, flow rate, pressure drop, force, thermal,
                             environmental, response time, life cycle, and
                             electrical testing.
@@ -722,152 +771,21 @@
         </section>
 
         <!-- WHY CUSTOMERS CHOOSE ROCKER SECTION -->
-        <section class="about-section">
+        <section
+            class="about-section about-section--title-left about-section--tight-top-half"
+        >
             <div class="about-inner">
-                <h2 class="about-title">
-                    Built on Engineering Experience and Customer Partnership
-                </h2>
-
-                <div class="about-grid-4">
-                    <div class="about-card">
-                        <div class="about-icon" aria-hidden="true">
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M21 15a4 4 0 0 1-4 4H7l-4 3v-3a4 4 0 0 1-4-4V7a4 4 0 0 1 4-4h14a4 4 0 0 1 4 4v8Z"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linejoin="round"
-                                />
-                                <path
-                                    d="M7 9h10M7 12h7"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Responsive Support</h3>
-                        <p>
-                            Direct communication and collaborative problem
-                            solving from prototype through production.
-                        </p>
-                    </div>
-
-                    <div class="about-card">
-                        <div class="about-icon" aria-hidden="true">
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M21 7l-9 10-4-4"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                                <path
-                                    d="M3 7h10"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Custom Solutions</h3>
-                        <p>
-                            Application-specific solenoid and solenoid valve
-                            solutions tailored to customer requirements.
-                        </p>
-                    </div>
-
-                    <div class="about-card">
-                        <div class="about-icon" aria-hidden="true">
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M4 20V8l8-4 8 4v12H4Z"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linejoin="round"
-                                />
-                                <path
-                                    d="M8 11h8"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Manufacturing Experience</h3>
-                        <p>
-                            Decades of experience supporting complex aerospace
-                            and defense applications.
-                        </p>
-                    </div>
-
-                    <div class="about-card">
-                        <div class="about-icon" aria-hidden="true">
-                            <svg
-                                viewBox="0 0 24 24"
-                                width="24"
-                                height="24"
-                                fill="none"
-                                xmlns="http://www.w3.org/2000/svg"
-                            >
-                                <path
-                                    d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4Z"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linejoin="round"
-                                />
-                                <path
-                                    d="M9 12l2 2 4-4"
-                                    stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
-                                />
-                            </svg>
-                        </div>
-                        <h3>Quality Commitment</h3>
-                        <p>
-                            A disciplined approach to manufacturing, inspection,
-                            and continuous improvement.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- QUALITY SECTION -->
-        <section class="about-section about-section--alt">
-            <div class="about-inner about-center">
-                <h2 class="about-title">Committed to Quality and Reliability</h2>
+                <h2 class="about-title">Responsive Partnership. Proven Experience.</h2>
                 <p class="about-body">
-                    Rocker Industries maintains ISO 9001 and AS9100 certified
-                    quality systems designed to support demanding customer
-                    requirements and long-term product reliability.
+                    Rocker Industries combines decades of aerospace and defense
+                    manufacturing experience with responsive customer support and
+                    practical engineering collaboration.
                 </p>
-                <div style="margin-top: 16px">
-                    <a href="quality.html" class="learn-btn"
-                        >View Quality Standards →</a
-                    >
-                </div>
+                <p class="about-body">
+                    Whether supporting custom applications or build-to-print
+                    requirements, our team is committed to dependable execution
+                    from prototype through production.
+                </p>
             </div>
         </section>
 
