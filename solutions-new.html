@@ -215,72 +215,97 @@
                 color: #ffffff;
             }
 
-            /* Section 1: two cards */
-            .solutions-two {
+            /* Section 1: unified editorial split (one image, two pathways) */
+            .cepm {
+                margin-top: 18px;
                 display: grid;
-                grid-template-columns: repeat(2, minmax(0, 1fr));
-                gap: 18px;
-                margin-top: 22px;
-                align-items: stretch;
+                grid-template-columns: 0.92fr 1.08fr;
+                gap: clamp(18px, 3.6vw, 46px);
+                align-items: start;
             }
 
-            .solutions-card {
-                background: rgba(255, 255, 255, 0.92);
-                border: 1px solid rgba(11, 19, 36, 0.1);
-                border-radius: 16px;
-                box-shadow: var(--shadow);
+            .cepm-top {
+                text-align: center;
+            }
+
+            .cepm-top .cepm-intro {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .cepm-media {
+                border-radius: 22px;
                 overflow: hidden;
-                transition: transform 0.2s ease, box-shadow 0.2s ease;
-                display: flex;
-                flex-direction: column;
-                min-height: 100%;
+                border: 1px solid rgba(11, 19, 36, 0.12);
+                background: #ffffff;
+                box-shadow: 0 18px 48px rgba(16, 24, 40, 0.16);
+                aspect-ratio: 16 / 12;
+                max-height: 520px;
             }
 
-            .solutions-card:hover {
-                transform: translateY(-5px);
-                box-shadow: var(--shadow-hover);
-            }
-
-            .solutions-card-media {
-                position: relative;
-                aspect-ratio: 16 / 9;
-                overflow: hidden;
-            }
-
-            .solutions-card-media img {
+            .cepm-media img {
                 width: 100%;
                 height: 100%;
                 object-fit: cover;
                 display: block;
                 transform: scale(1.01);
-                transition: transform 260ms ease, filter 260ms ease;
+                transition: transform 320ms ease, filter 320ms ease;
             }
 
-            .solutions-card:hover .solutions-card-media img {
-                transform: scale(1.04);
-                filter: saturate(1.03);
+            .cepm:hover .cepm-media img {
+                transform: scale(1.03);
+                filter: saturate(1.02) contrast(1.02);
             }
 
-            .solutions-card-body {
-                padding: 22px 20px;
+            .cepm-headline {
+                margin: 0;
+                color: var(--ink);
+                font-weight: 760;
+                font-size: clamp(1.18rem, 2vw, 1.62rem);
+                line-height: 1.18;
+                letter-spacing: 0.01em;
             }
 
-            .solutions-card h3 {
-                margin: 0 0 10px;
-                font-size: 18.5px;
-                font-weight: 750;
+            .cepm-intro {
+                margin: 8px 0 0;
+                padding: 0;
+                color: rgba(11, 19, 36, 0.72);
+                font-size: 15px;
+                line-height: 1.75em;
+                max-width: 74ch;
+            }
+
+            .cepm-paths {
+                margin-top: 18px;
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 18px;
+            }
+
+            .cepm-path {
+                padding-left: 14px;
+                border-left: 2px solid rgba(83, 151, 234, 0.35);
+            }
+
+            .cepm-title {
+                margin: 0 0 8px;
+                font-size: 18px;
+                font-weight: 820;
                 color: rgba(30, 96, 145, 0.98);
                 letter-spacing: 0.01em;
             }
 
-            .solutions-card p {
+            .cepm-body {
                 margin: 0;
                 padding: 0;
                 color: #4b4c4d;
-                line-height: 1.8em;
+                line-height: 1.85em;
                 font-weight: 400;
-                font-size: 15.5px;
+                font-size: 15px;
+                max-width: 74ch;
             }
+
+            /* capability tags removed */
 
             /* Section 2: product split cards */
             .product-stack {
@@ -476,10 +501,9 @@
             }
 
             @media (prefers-reduced-motion: reduce) {
-                .solutions-card,
+                .cepm-media img,
                 .product-card,
                 .cap-card,
-                .solutions-card-media img,
                 .product-card:hover .product-media .thumb,
                 .reveal {
                     transition: none !important;
@@ -492,8 +516,11 @@
 
             /* Responsive */
             @media (max-width: 980px) {
-                .solutions-two {
+                .cepm {
                     grid-template-columns: 1fr;
+                }
+                .cepm-media {
+                    aspect-ratio: 16 / 10;
                 }
                 .product-grid {
                     grid-template-columns: 1fr;
@@ -517,7 +544,7 @@
             <nav>
                 <div>
                     <a href="index.html" class="logotext"
-                        ><img src="images/rocker-logo.png" alt=""
+                        ><img src="images/rocker-logo-redesign.png" alt=""
                     /></a>
                 </div>
 
@@ -564,39 +591,57 @@
         </section>
 
         <!-- SECTION 1 -->
-        <section class="solutions-section solutions-section--alt solutions-section--tight-top">
+        <section class="solutions-section solutions-section--tight-top">
             <div class="solutions-inner">
-                <h2 class="solutions-title reveal">Two Ways We Support Your Program</h2>
+                <div class="cepm-top reveal">
+                    <h2 class="cepm-headline">
+                        Custom Engineered. Precision Manufactured.
+                    </h2>
+                    <p class="cepm-intro">
+                        Whether developing a new solution or manufacturing to an
+                        existing design, Rocker provides responsive engineering
+                        support and dependable execution from prototype through
+                        production.
+                    </p>
+                </div>
 
-                <div class="solutions-two">
-                    <article class="solutions-card reveal">
-                        <div class="solutions-card-media" aria-hidden="true">
-                            <img src="images/sol4.jpg" alt="" />
-                        </div>
-                        <div class="solutions-card-body">
-                            <h3>Custom Design &amp; Development</h3>
-                            <p>
-                                For new requirements, Rocker supports customers
-                                from specification review and concept development
-                                through analysis, prototyping, testing, and
-                                production.
-                            </p>
-                        </div>
-                    </article>
+                <div class="cepm reveal">
+                    <div class="cepm-media" aria-hidden="true">
+                        <img
+                            src="images/custom-engineered.png"
+                            alt=""
+                        />
+                    </div>
 
-                    <article class="solutions-card reveal">
-                        <div class="solutions-card-media" aria-hidden="true">
-                            <img src="images/machine.jpg" alt="" />
+                    <div>
+                        <div class="cepm-paths">
+                            <div class="cepm-path">
+                                <h3 class="cepm-title">
+                                    Custom Design &amp; Development
+                                </h3>
+                                <p class="cepm-body">
+                                    Rocker supports customers from concept
+                                    development through analysis, prototyping,
+                                    testing, and production for new and
+                                    application-specific solenoid and solenoid
+                                    valve requirements.
+                                </p>
+                            </div>
+
+                            <div class="cepm-path">
+                                <h3 class="cepm-title">
+                                    Build-to-Print Manufacturing
+                                </h3>
+                                <p class="cepm-body">
+                                    For established designs, Rocker manufactures
+                                    to customer drawings, specifications, and
+                                    processes with the precision, quality, and
+                                    consistency required for demanding aerospace
+                                    and defense applications.
+                                </p>
+                            </div>
                         </div>
-                        <div class="solutions-card-body">
-                            <h3>Build-to-Print Manufacturing</h3>
-                            <p>
-                                For established designs, Rocker manufactures to
-                                customer drawings, processes, and specifications
-                                with precision, quality, and consistency.
-                            </p>
-                        </div>
-                    </article>
+                    </div>
                 </div>
             </div>
         </section>
