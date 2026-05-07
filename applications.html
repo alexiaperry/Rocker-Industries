@@ -92,31 +92,32 @@
             /* ============================================
                HERO
                ============================================ */
+            /* Hero: full-bleed background image with gradient overlay on the section itself */
             .applications-hero {
                 position: relative;
                 min-height: clamp(520px, 64vh, 720px);
                 width: 100%;
                 overflow: hidden;
-                background:
-                    linear-gradient(
-                        100deg,
-                        rgba(11, 19, 36, 0.86) 0%,
-                        rgba(11, 19, 36, 0.62) 55%,
-                        rgba(11, 19, 36, 0.5) 100%
-                    ),
-                    url("images/Hero-1.png") right center / cover no-repeat;
+                background-color: #0a1628;
+                background-image: url("images/Hero-1.png");
+                background-repeat: no-repeat;
+                background-position: right center;
+                background-size: 75% auto;
                 display: flex;
                 align-items: center;
             }
 
-            .applications-hero::after {
+            /* Solid navy on left, fading smoothly to fully transparent on the right */
+            .applications-hero::before {
                 content: "";
                 position: absolute;
                 inset: 0;
-                background: radial-gradient(
-                    ellipse at 0% 50%,
-                    rgba(11, 19, 36, 0.45) 0%,
-                    rgba(11, 19, 36, 0) 60%
+                background: linear-gradient(
+                    to right,
+                    #0a1628 0%,
+                    #0a1628 35%,
+                    rgba(10, 22, 40, 0.7) 55%,
+                    rgba(10, 22, 40, 0) 75%
                 );
                 pointer-events: none;
                 z-index: 1;
@@ -125,13 +126,13 @@
             .applications-hero .hero-content {
                 position: relative;
                 z-index: 2;
-                width: min(1280px, 96%);
+                width: min(1320px, 97%);
                 margin: 0;
                 padding: clamp(28px, 4.9vw, 67px) clamp(28px, 5vw, 64px)
-                    clamp(28px, 4.9vw, 67px) clamp(20px, 4vw, 56px);
+                    clamp(28px, 4.9vw, 67px) clamp(28px, 2.4vw, 46px);
                 color: #ffffff;
                 text-align: left;
-                max-width: 1280px;
+                max-width: 1320px;
             }
 
             .hero-content > * {
@@ -197,7 +198,7 @@
             }
 
             .app-inner {
-                width: min(1120px, 92%);
+                width: min(1200px, 96%);
                 margin: 0 auto;
             }
 
@@ -357,6 +358,17 @@
                 line-height: 1.55;
             }
 
+            /* Military Ground: single column, compact row spacing */
+            .cat-list--ground {
+                display: grid;
+                grid-template-columns: 1fr;
+                gap: 6px;
+            }
+
+            .cat-list--ground li {
+                line-height: 1.52;
+            }
+
             .cat-list li {
                 position: relative;
                 padding-left: 16px;
@@ -376,11 +388,18 @@
                 background: var(--accent-muted-blue);
             }
 
-            .cat-list .label {
-                display: inline;
-                color: var(--ink);
-                font-weight: 700;
-                margin-right: 4px;
+            /* Fixed Wing: two-column reference layout */
+            .fixed-wing-grid {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 10px clamp(24px, 3.5vw, 48px);
+                margin-top: 14px;
+                width: 100%;
+            }
+
+            .fixed-wing-grid .cat-list {
+                margin-top: 0;
+                gap: 12px;
             }
 
             /* ============================================
@@ -393,12 +412,21 @@
                 text-align: center;
                 position: relative;
                 overflow: hidden;
+                opacity: 0;
+                transform: translateY(10px);
+                transition: opacity 0.3s ease, transform 0.3s ease;
+            }
+
+            .credibility-bar.is-visible {
+                opacity: 1;
+                transform: translateY(0);
             }
 
             .credibility-bar::before {
                 content: "";
                 position: absolute;
                 inset: 0;
+                z-index: 0;
                 background:
                     radial-gradient(
                         ellipse at 50% 0%,
@@ -417,8 +445,8 @@
 
             .credibility-inner {
                 position: relative;
-                z-index: 1;
-                width: min(880px, 92%);
+                z-index: 2;
+                width: min(980px, 96%);
                 margin: 0 auto;
             }
 
@@ -446,7 +474,7 @@
             .reveal {
                 opacity: 0;
                 transform: translateY(10px);
-                transition: opacity 0.4s ease, transform 0.4s ease;
+                transition: opacity 0.3s ease, transform 0.3s ease;
             }
 
             .reveal.is-visible {
@@ -457,7 +485,7 @@
             .app-section {
                 opacity: 0;
                 transform: translateY(10px);
-                transition: opacity 0.4s ease, transform 0.4s ease;
+                transition: opacity 0.3s ease, transform 0.3s ease;
             }
 
             .app-section.is-visible {
@@ -468,11 +496,13 @@
             @media (prefers-reduced-motion: reduce) {
                 .reveal,
                 .app-section,
+                .credibility-bar,
                 .app-media img {
                     transition: none !important;
                 }
                 .reveal,
-                .app-section {
+                .app-section,
+                .credibility-bar {
                     opacity: 1;
                     transform: none;
                 }
@@ -513,6 +543,10 @@
                 }
 
                 .cat-list--two-col {
+                    grid-template-columns: 1fr;
+                }
+
+                .fixed-wing-grid {
                     grid-template-columns: 1fr;
                 }
             }
@@ -598,61 +632,34 @@
                             range of commercial aircraft and business aviation
                             platforms.
                         </p>
-                        <ul class="cat-list">
+                        <ul class="platform-list">
                             <li>
-                                <span class="label">Airbus:</span> A380, A350,
-                                A340, A330, A320, A319, A318, A310, A300
+                                Airbus – A380, A350, A340, A330, A320, A319,
+                                A318, A310, A300
                             </li>
                             <li>
-                                <span class="label">Boeing:</span> B787, B777,
-                                B767, B757, B747, B737, B727, B717, B707
+                                Boeing – B787, B777, B767, B757, B747, B737,
+                                B727, B717, B707
                             </li>
                             <li>
-                                <span class="label">Bombardier Learjet:</span>
-                                60, 55, 45, 40, 36, 35
+                                Bombardier Learjet – 60, 55, 45, 40, 36, 35
                             </li>
+                            <li>Cessna Citation</li>
+                            <li>Eclipse 500</li>
+                            <li>Embraer Phenom 300</li>
+                            <li>Falcon 20</li>
+                            <li>Fokker 100</li>
+                            <li>Gulfstream V</li>
+                            <li>Honda HA420</li>
+                            <li>Lockheed Constellation L1011</li>
                             <li>
-                                <span class="label">Cessna:</span> Citation
+                                McDonnell Douglas – MD95, MD90, MD80, MD11,
+                                DC10, DC9, DC8
                             </li>
-                            <li>
-                                <span class="label">Eclipse:</span> 500
-                            </li>
-                            <li>
-                                <span class="label">Embraer:</span> Phenom 300
-                            </li>
-                            <li>
-                                <span class="label">Falcon:</span> 20
-                            </li>
-                            <li>
-                                <span class="label">Fokker:</span> 100
-                            </li>
-                            <li>
-                                <span class="label">Gulfstream:</span> V
-                            </li>
-                            <li>
-                                <span class="label">Honda:</span> HA420
-                            </li>
-                            <li>
-                                <span class="label">Lockheed:</span>
-                                Constellation, L1011
-                            </li>
-                            <li>
-                                <span class="label">McDonnell Douglas:</span>
-                                MD95, MD90, MD80, MD11, DC10, DC9, DC8
-                            </li>
-                            <li>
-                                <span class="label">Raytheon:</span> Hawker 4000
-                            </li>
-                            <li>
-                                <span class="label">Saab:</span> 340
-                            </li>
-                            <li>
-                                <span class="label">Chinook:</span> 234
-                            </li>
-                            <li>
-                                <span class="label">Augusta Westland:</span>
-                                EH101
-                            </li>
+                            <li>Raytheon Hawker 4000</li>
+                            <li>Saab 340</li>
+                            <li>Chinook 234</li>
+                            <li>Augusta Westland EH101</li>
                         </ul>
                     </div>
                 </div>
@@ -666,53 +673,58 @@
                     <div class="app-content">
                         <h2 class="app-heading">Military Aircraft</h2>
                         <p class="app-subhead">Fixed Wing</p>
-                        <ul class="cat-list">
-                            <li>
-                                <span class="label">Attack bomber:</span> AV6,
-                                AV7, AC130 H/U Gunship, AV8 Harrier, A50, B1
-                                Lancer, B2 Spirit, B52 Stratofortress, British
-                                Aerospace Nimrod MRA4
-                            </li>
-                            <li>
-                                <span class="label">Cargo:</span> C5 Galaxy,
-                                C17 Globemaster III, C130 Hercules, Kawasaki
-                                C-X
-                            </li>
-                            <li>
-                                <span class="label">Drone:</span> MQ-1B
-                                Predator, AV7 Global Hawk
-                            </li>
-                            <li>
-                                <span class="label">Electronic Mission:</span>
-                                E2C Hawkeye 2000, EA-6B Prowler
-                            </li>
-                            <li>
-                                <span class="label">Fighter:</span> F35
-                                Lightning II, F22 Raptor, F117 Nighthawk, F/A18
-                                E/F Super Hornet, F/A18 Hornet, F16 Fighting
-                                Falcon, F15E Strike Eagle, F15 Eagle, F5 Tiger
-                                II, F4 Phantom, F105 Thunderchief, F104 Shooting
-                                Star
-                            </li>
-                            <li>
-                                <span class="label">Search &amp; Rescue:</span>
-                                HC130 Hercules, Kawasaki P-X
-                            </li>
-                            <li>
-                                <span class="label">Tanker:</span> KC10 Extender
-                            </li>
-                            <li>
-                                <span class="label">Trainers:</span> T38 Talon,
-                                T45 Goshawk, T50/KTX, Mitsubishi T2
-                            </li>
-                            <li>
-                                <span class="label">Unmanned fighter:</span>
-                                X47A Pegasus
-                            </li>
-                            <li>
-                                <span class="label">Utility:</span> U2, UC35
-                            </li>
-                        </ul>
+                        <div class="fixed-wing-grid">
+                            <ul class="cat-list">
+                                <li>
+                                    <span class="label">Attack bomber:</span>
+                                    AV6, AV7, AC130 H/U Gunship, AV8 Harrier, A50,
+                                    B1 Lancer, B2 Spirit, B52 Stratofortress,
+                                    British Aerospace Nimrod MRA4
+                                </li>
+                                <li>
+                                    <span class="label">Cargo:</span> C5
+                                    Galaxy, C17 Globemaster III, C130 Hercules,
+                                    Kawasaki C-X
+                                </li>
+                                <li>
+                                    <span class="label">Drone:</span> MQ-1B
+                                    Predator, AV7 Global Hawk
+                                </li>
+                                <li>
+                                    <span class="label">Electronic Mission:</span>
+                                    E2C Hawkeye 2000, EA-6B Prowler
+                                </li>
+                                <li>
+                                    <span class="label">Fighter:</span> F35
+                                    Lightning II, F22 Raptor, F117 Nighthawk,
+                                    F/A18 E/F Super Hornet, F/A18 Hornet, F16
+                                    Fighting Falcon, F15E Strike Eagle, F15
+                                    Eagle, F5 Tiger II, F4 Phantom, F105
+                                    Thunderchief, F104 Shooting Star
+                                </li>
+                            </ul>
+                            <ul class="cat-list">
+                                <li>
+                                    <span class="label">Search &amp; Rescue:</span>
+                                    HC130 Hercules, Kawasaki P-X
+                                </li>
+                                <li>
+                                    <span class="label">Tanker:</span> KC10
+                                    Extender
+                                </li>
+                                <li>
+                                    <span class="label">Trainers:</span> T38
+                                    Talon, T45 Goshawk, T50/KTX, Mitsubishi T2
+                                </li>
+                                <li>
+                                    <span class="label">Unmanned fighter:</span>
+                                    X47A Pegasus
+                                </li>
+                                <li>
+                                    <span class="label">Utility:</span> U2, UC35
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="app-media">
                         <img src="images/b2.jpg" alt="" />
@@ -767,7 +779,7 @@
                 <div class="app-row app-row--reverse reveal">
                     <div class="app-content">
                         <h2 class="app-heading">Military Ground and More</h2>
-                        <ul class="cat-list cat-list--two-col">
+                        <ul class="cat-list cat-list--ground">
                             <li>
                                 <span class="label">Military Ground:</span> M1
                                 Abrams Tank, MLRS, Bradley Fighting Vehicle
@@ -805,7 +817,7 @@
 
         <!-- CREDIBILITY BAR -->
         <section class="credibility-bar">
-            <div class="credibility-inner reveal">
+            <div class="credibility-inner">
                 <h2>Trusted in the world’s most demanding applications.</h2>
                 <p>
                     Engineered for performance. Built for reliability. Proven
@@ -863,15 +875,23 @@
             }
 
             (function () {
+                var els = Array.prototype.slice.call(
+                    document.querySelectorAll(
+                        ".reveal, .app-section, .credibility-bar"
+                    )
+                );
+
                 var prefersReduced =
                     window.matchMedia &&
                     window.matchMedia("(prefers-reduced-motion: reduce)")
                         .matches;
-                if (prefersReduced) return;
+                if (prefersReduced) {
+                    els.forEach(function (el) {
+                        el.classList.add("is-visible");
+                    });
+                    return;
+                }
 
-                var els = Array.prototype.slice.call(
-                    document.querySelectorAll(".reveal, .app-section")
-                );
                 if (!("IntersectionObserver" in window)) {
                     els.forEach(function (el) {
                         el.classList.add("is-visible");
