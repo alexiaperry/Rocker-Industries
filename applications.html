@@ -137,15 +137,18 @@
             }
 
             .applications-hero .hero-content {
-                position: relative;
+                position: absolute;
                 z-index: 2;
-                width: min(1320px, 97%);
+                width: 40%;
+                min-width: 320px;
+                top: 54%;
+                left: 6%;
+                transform: translateY(-50%);
                 margin: 0;
-                padding: clamp(28px, 4.9vw, 67px) clamp(28px, 5vw, 64px)
-                    clamp(28px, 4.9vw, 67px) clamp(28px, 2.4vw, 46px);
+                padding: 0 clamp(10px, 2.2vw, 24px) 34px;
                 color: #ffffff;
                 text-align: left;
-                max-width: 1320px;
+                text-shadow: 0 6px 22px rgba(0, 0, 0, 0.45);
             }
 
             .hero-content > * {
@@ -575,6 +578,13 @@
 
                 .fixed-wing-grid {
                     grid-template-columns: 1fr;
+                }
+            }
+
+            @media (max-width: 900px) {
+                .applications-hero .hero-content {
+                    width: min(640px, 90%);
+                    min-width: 0;
                 }
             }
 

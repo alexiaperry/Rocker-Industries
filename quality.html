@@ -17,6 +17,10 @@
             rel="stylesheet"
         />
         <link
+            href="https://fonts.googleapis.com/css2?family=Allura&display=swap"
+            rel="stylesheet"
+        />
+        <link
             href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Lato&family=Barlow:wght@300&family=Finlandica&family=Poppins:wght@100;200;400;600;700&family=Roboto:ital@1&display=swap"
             rel="stylesheet"
         />
@@ -101,82 +105,39 @@
                 box-shadow: 0 8px 20px rgba(83, 151, 234, 0.28);
             }
 
-            /* ========== HERO (split gradient like applications) ========== */
+            /* ========== HERO (match index.html structure + styling) ========== */
             .quality-hero {
-                position: relative;
-                min-height: clamp(520px, 64vh, 720px);
-                width: 100%;
-                overflow: hidden;
-                background-color: #0a1628;
-                background-image: url("https://images.unsplash.com/photo-1581092160562-40aa08ee5217?auto=format&fit=crop&w=2400&q=80");
-                background-repeat: no-repeat;
-                background-position: calc(100% + 18%) center;
-                background-size: 82% auto;
                 display: flex;
-                align-items: center;
+                align-items: flex-start;
+                padding-top: 80px;
             }
 
-            .quality-hero::before {
-                content: "";
-                position: absolute;
-                inset: 0;
+            /* Override index.css hero overlay for this page */
+            .quality-hero .hero-carousel-frame::before {
                 background: linear-gradient(
-                        to right,
-                        #0a1628 0%,
-                        #0a1628 32%,
-                        rgba(10, 22, 40, 0.82) 50%,
-                        rgba(10, 22, 40, 0.45) 66%,
-                        rgba(10, 22, 40, 0.12) 82%,
-                        rgba(10, 22, 40, 0.35) 100%
-                    ),
-                    rgba(10, 22, 40, 0.28);
-                pointer-events: none;
-                z-index: 1;
+                    to right,
+                    #0a1628 0%,
+                    #0a1628 35%,
+                    rgba(10, 22, 40, 0.7) 55%,
+                    rgba(10, 22, 40, 0) 75%
+                );
             }
 
-            .quality-hero-content {
-                position: relative;
-                z-index: 2;
-                width: min(1320px, 97%);
-                margin: 0;
-                padding: clamp(28px, 4.9vw, 67px) clamp(28px, 5vw, 64px)
-                    clamp(28px, 4.9vw, 67px) clamp(28px, 2.4vw, 46px);
-                color: #ffffff;
-                text-align: left;
-                max-width: 1320px;
+            .quality-hero .hero-carousel-frame {
+                background: #0a1628;
             }
 
-            .quality-hero-content > * {
-                max-width: 640px;
+            .quality-hero .hero-carousel-frame img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 76%;
+                object-fit: cover;
+                object-position: right center;
             }
 
-            .quality-hero-kicker {
-                margin: 0 0 16px;
-                color: var(--accent-muted-blue);
-                font-size: 12.5px;
-                font-weight: 700;
-                letter-spacing: 0.32em;
-                text-transform: uppercase;
-            }
-
-            .quality-hero h1 {
-                margin: 0;
-                color: #ffffff;
-                font-weight: 750;
-                font-size: clamp(2rem, 4.6vw, 3.35rem);
-                line-height: 1.08;
-                letter-spacing: -0.012em;
-                max-width: 18ch;
-            }
-
-            .quality-hero-sub {
-                margin: 20px 0 0;
-                color: rgba(255, 255, 255, 0.9);
-                font-size: clamp(1rem, 1.45vw, 1.12rem);
-                line-height: 1.65;
-                font-weight: 400;
-                max-width: 42ch;
-            }
+            /* Use index.css positioning for .hero-banner .main-text (no override) */
 
             /* ========== Sections ========== */
             .q-section {
@@ -206,111 +167,282 @@
                 margin: 0 auto;
             }
 
-            /* ========== Quote ========== */
-            .q-quote-grid {
+            /* ========== Founder quote (editorial two-column) ========== */
+            .q-founder-section {
+                position: relative;
+                padding-top: clamp(56px, 8vw, 96px) !important;
+                padding-bottom: clamp(56px, 8vw, 96px) !important;
+            }
+
+            .q-founder-section .q-inner {
+                position: relative;
+            }
+
+            .q-founder-grid {
                 display: grid;
-                grid-template-columns: 1.05fr 0.95fr;
-                gap: clamp(28px, 4vw, 56px);
-                align-items: center;
+                grid-template-columns: minmax(0, 1.12fr) minmax(260px, 0.88fr);
+                gap: clamp(28px, 4.5vw, 64px);
+                align-items: start;
             }
 
-            .q-quote-copy {
-                position: relative;
-                padding: clamp(28px, 3vw, 44px) 0 clamp(8px, 1.2vw, 16px);
+            .q-founder-col--quote {
+                text-align: left;
             }
 
-            .q-quote-body {
-                position: relative;
-                padding: 0 12px 52px 12px;
-            }
-
-            .q-quote-body::before,
-            .q-quote-body::after {
-                font-family: Georgia, "Times New Roman", serif !important;
-                position: absolute;
-                font-size: clamp(4rem, 10vw, 6.5rem);
-                line-height: 1;
+            .q-founder-eyebrow {
+                margin: 0 0 clamp(14px, 2vw, 20px);
+                padding: 0;
+                text-align: left;
+                font-size: 18px;
                 font-weight: 700;
-                color: rgba(83, 151, 234, 0.42);
-                pointer-events: none;
-                user-select: none;
+                letter-spacing: 0.2em;
+                text-transform: uppercase;
+                font-variant: all-small-caps;
+                color: rgba(30, 96, 145, 0.92);
             }
 
-            .q-quote-body::before {
-                content: "“";
-                left: -10px;
-                top: -18px;
-            }
-
-            .q-quote-body::after {
-                content: "”";
-                right: -4px;
-                bottom: -36px;
-            }
-
-            .q-quote-text {
+            .q-founder-quote {
                 margin: 0;
                 padding: 0;
-                position: relative;
-                z-index: 1;
-                color: #4b4c4d;
-                font-size: clamp(1rem, 1.35vw, 1.12rem);
-                line-height: 1.82;
-                font-weight: 400;
+                max-width: 56ch;
                 border: none;
+                text-align: left;
+                color: var(--ink);
+                font-size: clamp(1.02rem, 1.3vw, 1.1rem);
+                line-height: 1.88;
+                font-weight: 400;
+                font-style: normal;
             }
 
-            .q-quote-attrib {
-                margin-top: 22px;
-                padding-left: 12px;
+            .q-founder-hrule {
+                width: 48px;
+                height: 4px;
+                margin: clamp(18px, 2.4vw, 26px) 0 clamp(16px, 2vw, 22px);
+                background: rgba(30, 96, 145, 0.95);
+                border-radius: 2px;
             }
 
-            .q-quote-attrib strong {
+            .q-founder-byline strong {
                 display: block;
                 color: var(--ink);
                 font-size: 1.05rem;
                 font-weight: 750;
+                letter-spacing: 0.01em;
             }
 
-            .q-quote-attrib .q-quote-role {
+            .q-founder-byline em {
                 display: block;
-                margin-top: 4px;
+                margin-top: 6px;
                 font-style: italic;
-                color: rgba(11, 19, 36, 0.62);
+                color: rgba(11, 19, 36, 0.55);
                 font-size: 0.95rem;
                 font-weight: 400;
             }
 
-            .q-watermark-wrap {
+            .q-founder-aside {
+                display: flex;
+                gap: clamp(20px, 3vw, 36px);
+                align-items: stretch;
+                min-height: min(100%, 320px);
+            }
+
+            .q-founder-vrule {
+                width: 1px;
+                flex: 0 0 auto;
+                background: #e9ecef;
+            }
+
+            .q-founder-aside-inner {
+                flex: 1;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+                padding: clamp(6px, 1vw, 12px) 0;
+            }
+
+            .q-founder-signature-block {
+                display: inline-block;
+                max-width: 100%;
+                margin: 0 0 2px;
+            }
+
+            .q-founder-signature {
+                margin: 0;
+                font-family: "Allura", cursive !important;
+                font-size: clamp(1.95rem, 3.15vw, 2.55rem);
+                font-weight: 400;
+                line-height: 0.92;
+                padding-bottom: 0.2em;
+                color: rgba(30, 96, 145, 0.82);
+                letter-spacing: 0.02em;
+                opacity: 0.9;
+            }
+
+            .q-founder-signature-line {
+                width: calc(100% + 18px);
+                max-width: calc(100% + 18px);
+                margin: -0.14em 0 14px;
+                border-bottom: 1px solid rgba(30, 96, 145, 0.38);
+            }
+
+            .q-founder-cert-icon--usa {
+                color: #0b1324;
+            }
+
+            .q-founder-byline--compact strong {
+                font-size: 1rem;
+            }
+
+            .q-founder-byline--compact em {
+                margin-top: 4px;
+                font-size: 0.9rem;
+            }
+
+            .q-founder-certs {
+                display: flex;
+                align-items: center;
+                justify-content: flex-start;
+                flex-wrap: nowrap;
+                gap: 6px 10px;
+                margin-top: clamp(22px, 3.2vw, 36px);
+                padding-top: clamp(18px, 2.6vw, 28px);
+                border-top: 1px solid #e9ecef;
+                width: 100%;
+            }
+
+            .q-founder-cert {
+                flex: 0 0 auto;
+                min-width: 0;
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: flex-start;
+                gap: 10px;
+                padding: 0;
+                padding-right: 8px;
+                text-align: left;
+            }
+
+            .q-founder-cert + .q-founder-cert {
+                border-left: 1px solid #e9ecef;
+                padding-left: 10px;
+                padding-right: 8px;
+            }
+
+            .q-founder-cert-icon {
+                color: rgba(30, 96, 145, 0.92);
                 display: flex;
                 align-items: center;
                 justify-content: center;
-                min-height: 280px;
+                flex: 0 0 auto;
             }
 
-            .q-watermark-svg {
-                width: min(100%, 340px);
-                height: auto;
-                opacity: 0.14;
-                color: #9aa3ad;
+            .q-founder-cert-icon svg {
+                width: 28px;
+                height: 28px;
             }
 
-            /* ========== Overview ========== */
-            .q-overview p {
+            .q-founder-cert-icon--usa svg {
+                width: 32px;
+                height: 28px;
+            }
+
+            .q-founder-cert-text {
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+                min-width: 0;
+            }
+
+            .q-founder-cert-text--single {
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-items: baseline;
+            }
+
+            .q-founder-cert-text--single .q-founder-cert-line {
+                white-space: nowrap;
+            }
+
+            .q-founder-cert-text span,
+            .q-founder-cert-line {
+                display: block;
+                font-size: 11px;
+                font-weight: 700;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: var(--ink);
+                line-height: 1.25;
+            }
+
+            .q-intro-features {
+                display: grid;
+                grid-template-columns: 1fr 1fr;
+                gap: 18px 36px;
+                margin-top: 0;
+                background: #ffffff;
+                padding: clamp(18px, 2.2vw, 26px);
+            }
+
+            /* Dock-to-Stock + QA copy: own section below founder quote */
+            .q-quality-highlights {
+                background: #ffffff;
+            }
+
+            .q-feature {
+                display: grid;
+                grid-template-columns: 56px 1fr;
+                gap: 14px;
+                align-items: start;
+            }
+
+            .q-feature-icon {
+                width: 56px;
+                height: 56px;
+                border-radius: 0;
+                background: transparent;
+                color: #0b1324;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+            }
+
+            .q-feature-icon::before {
+                content: "";
+                position: absolute;
+                inset: 50% auto auto 50%;
+                width: 52px;
+                height: 52px;
+                transform: translate(-50%, -50%);
+                border-radius: 999px;
+                background: rgba(83, 151, 234, 0.12);
+            }
+
+            .q-feature-icon svg {
+                width: 48px;
+                height: 48px;
+                position: relative;
+                z-index: 1;
+            }
+
+            .q-intro-features > .q-feature:nth-child(2) {
+                border-left: 1px solid #e9ecef;
+                padding-left: 26px;
+            }
+
+            .q-feature p {
                 margin: 0;
                 color: #4b4c4d;
-                font-size: clamp(0.98rem, 1.35vw, 1.05rem);
-                line-height: 1.85;
-                max-width: 88ch;
+                font-size: 15.5px;
+                line-height: 1.8;
+                font-style: normal;
             }
 
-            .q-overview p + p {
-                margin-top: 18px;
-            }
-
-            .q-overview strong {
+            .q-feature strong {
                 color: var(--ink);
-                font-weight: 700;
+                font-weight: 750;
             }
 
             .q-accent {
@@ -385,133 +517,7 @@
                 line-height: 1.65;
             }
 
-            /* ========== Certifications ========== */
-            .q-cert {
-                background: var(--ink);
-                color: #ffffff;
-                border-top: none !important;
-            }
-
-            .q-cert-grid {
-                display: grid;
-                grid-template-columns: 1.05fr 0.95fr;
-                gap: clamp(24px, 3.5vw, 48px);
-                align-items: stretch;
-            }
-
-            .q-cert-label {
-                font-size: 11px;
-                letter-spacing: 0.22em;
-                text-transform: uppercase;
-                font-weight: 700;
-                color: var(--accent-muted-blue);
-                margin: 0 0 10px;
-                display: inline-block;
-            }
-
-            .q-cert-label::after {
-                content: "";
-                display: block;
-                width: 44px;
-                height: 2px;
-                margin-top: 8px;
-                background: var(--accent-muted-blue);
-                border-radius: 999px;
-            }
-
-            .q-cert-logos {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: stretch;
-                justify-content: flex-start;
-                gap: 0;
-                margin: 22px 0 32px;
-            }
-
-            .q-cert-logo-cell {
-                flex: 1 1 0;
-                min-width: 140px;
-                padding: 16px 12px;
-                text-align: center;
-                font-weight: 800;
-                font-size: clamp(0.78rem, 1.05vw, 0.92rem);
-                letter-spacing: 0.06em;
-                line-height: 1.35;
-                color: #ffffff;
-                border-right: 1px solid rgba(255, 255, 255, 0.22);
-            }
-
-            .q-cert-logo-cell:last-child {
-                border-right: none;
-            }
-
-            .q-cert-testing-head {
-                margin-top: 8px;
-            }
-
-            .q-cert-lists {
-                display: grid;
-                grid-template-columns: 1fr 1fr;
-                gap: 10px 28px;
-                margin-top: 18px;
-            }
-
-            .q-cert-list {
-                list-style: none;
-                margin: 0;
-                padding: 0;
-            }
-
-            .q-cert-list li {
-                position: relative;
-                padding-left: 22px;
-                margin-bottom: 10px;
-                color: rgba(255, 255, 255, 0.88);
-                font-size: 15px;
-                line-height: 1.45;
-            }
-
-            .q-cert-list li::before {
-                content: "";
-                position: absolute;
-                left: 0;
-                top: 6px;
-                width: 7px;
-                height: 7px;
-                border-right: 2px solid var(--accent-muted-blue);
-                border-bottom: 2px solid var(--accent-muted-blue);
-                transform: rotate(-45deg);
-            }
-
-            .q-cert-media {
-                position: relative;
-                border-radius: var(--radius-lg);
-                overflow: hidden;
-                min-height: 320px;
-                box-shadow: 0 22px 58px rgba(0, 0, 0, 0.35);
-                background: rgba(255, 255, 255, 0.06);
-            }
-
-            .q-cert-media img {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-                display: block;
-                min-height: 320px;
-            }
-
-            .q-cert-media::after {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(
-                    135deg,
-                    rgba(11, 19, 36, 0.35) 0%,
-                    transparent 45%,
-                    rgba(11, 19, 36, 0.25) 100%
-                );
-                pointer-events: none;
-            }
+            /* Certifications section removed per request */
 
             /* ========== Reveal ========== */
             .reveal {
@@ -546,32 +552,44 @@
             }
 
             @media (max-width: 980px) {
-                .quality-hero {
-                    min-height: clamp(440px, 56vh, 620px);
-                    background-position: center center;
-                    background-size: cover;
-                }
-
-                .q-quote-grid,
-                .q-cert-grid {
+                .q-founder-grid {
                     grid-template-columns: 1fr;
+                    gap: clamp(28px, 4vw, 44px);
                 }
 
-                .q-watermark-wrap {
-                    min-height: 220px;
+                .q-founder-aside {
+                    flex-direction: column;
+                    min-height: 0;
                 }
 
-                .q-cert-logo-cell {
-                    border-right: none;
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+                .q-founder-vrule {
+                    width: 100%;
+                    height: 1px;
                 }
 
-                .q-cert-logo-cell:last-child {
-                    border-bottom: none;
+                .q-founder-aside-inner {
+                    padding-top: 8px;
                 }
 
                 .q-pillar-grid {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
+                }
+
+                .q-intro-features {
+                    grid-template-columns: 1fr;
+                }
+
+                .q-intro-features > .q-feature:nth-child(2) {
+                    border-left: none;
+                    padding-left: 0;
+                    border-top: 1px solid #e9ecef;
+                    padding-top: 18px;
+                }
+            }
+
+            @media (max-width: 640px) {
+                .q-founder-certs {
+                    flex-wrap: wrap;
                 }
             }
 
@@ -580,16 +598,17 @@
                     grid-template-columns: 1fr;
                 }
 
-                .q-cert-lists {
-                    grid-template-columns: 1fr;
-                }
-
-                .q-cert-logos {
+                .q-founder-certs {
                     flex-direction: column;
+                    align-items: stretch;
                 }
 
-                .q-cert-logo-cell {
-                    border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+                .q-founder-cert + .q-founder-cert {
+                    border-left: none;
+                    border-top: 1px solid #e9ecef;
+                    padding-top: 16px;
+                    padding-left: 0;
+                    padding-right: 0;
                 }
             }
         </style>
@@ -620,124 +639,242 @@
         </section>
 
         <section class="hero-banner quality-hero">
-            <div class="quality-hero-content reveal">
-                <p class="quality-hero-kicker">Quality</p>
-                <h1>Engineered for Reliability</h1>
-                <p class="quality-hero-sub">
-                    Quality isn’t a process — it’s our standard.
-                </p>
+            <div class="hero-carousel-frame" aria-hidden="true">
+                <img
+                    src="images/Hero-Quality.jpg"
+                    alt=""
+                />
             </div>
-        </section>
 
-        <section class="q-section q-section--alt">
-            <div class="q-inner">
-                <div class="q-quote-grid">
-                    <div class="q-quote-copy reveal">
-                        <div class="q-quote-body">
-                            <blockquote class="q-quote-text">
-                                At Rocker Industries, every employee is fully aware
-                                of the human life depending upon the quality and
-                                delivery of our products. We are dedicated to
-                                world-class, error-free performance, and continuous
-                                improvement. Our quality process assures consistent
-                                conformance exceeding our internal and external
-                                customer’s expectations.
-                            </blockquote>
-                        </div>
-                        <div class="q-quote-attrib">
-                            <strong>John Perry</strong>
-                            <span class="q-quote-role"
-                                >President, Rocker Industries</span
-                            >
-                        </div>
-                    </div>
-                    <div class="q-watermark-wrap reveal" aria-hidden="true">
-                        <svg
-                            class="q-watermark-svg"
-                            viewBox="0 0 320 320"
-                            xmlns="http://www.w3.org/2000/svg"
-                            xmlns:xlink="http://www.w3.org/1999/xlink"
+            <div class="main-text">
+                <div class="hero-copy reveal">
+                    <h1>Engineered for Reliability</h1>
+                    <p>Quality isn’t a process — it’s our standard.</p>
+                    <div class="hero-ctas">
+                        <a href="solutions.html" class="learn-btn learn-btn--primary"
+                            >Explore Solutions →</a
                         >
-                            <defs>
-                                <path
-                                    id="qCircleText"
-                                    d="M 160,160 m -118,0 a 118,118 0 1,1 236,0 a 118,118 0 1,1 -236,0"
-                                />
-                            </defs>
-                            <text
-                                fill="currentColor"
-                                font-size="10.5"
-                                font-weight="600"
-                                letter-spacing="0.12em"
-                            >
-                                <textPath
-                                    xlink:href="#qCircleText"
-                                    href="#qCircleText"
-                                    startOffset="0%"
-                                >
-                                    QUALITY • RELIABILITY • PERFORMANCE • BUILT
-                                    INTO EVERY DETAIL •
-                                </textPath>
-                            </text>
-                            <circle
-                                cx="160"
-                                cy="160"
-                                r="72"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="1.2"
-                                opacity="0.5"
-                            />
-                            <text
-                                x="160"
-                                y="172"
-                                text-anchor="middle"
-                                fill="currentColor"
-                                font-size="42"
-                                font-weight="750"
-                                font-family="Geist, system-ui, sans-serif"
-                            >
-                                iR
-                            </text>
-                            <text
-                                x="160"
-                                y="198"
-                                text-anchor="middle"
-                                fill="currentColor"
-                                font-size="9"
-                                font-weight="600"
-                                letter-spacing="0.28em"
-                                opacity="0.85"
-                            >
-                                ROCKER INDUSTRIES
-                            </text>
-                        </svg>
+                        <a
+                            href="applications.html"
+                            class="learn-btn learn-btn--secondary"
+                            >View Applications →</a
+                        >
                     </div>
                 </div>
             </div>
         </section>
 
-        <section class="q-section">
-            <div class="q-inner q-overview reveal">
-                <p>
-                    Rocker Industries is a
-                    <strong>Certified Dock-to-Stock supplier</strong> for the
-                    majority of our customers. We strive to find new ways to
-                    continually improve our product and processes, including
-                    implementation of a certified operator program throughout our
-                    facility.
-                </p>
-                <p>
-                    The Quality Assurance System at Rocker Industries meets our
-                    industries’ highest requirements. Rocker Industries is
-                    certified by Det Norske Veritas (DNV) to
-                    <span class="q-accent">AS9100</span> and
-                    <span class="q-accent">ISO9001</span>, and has certified
-                    in-house testing facilities to perform all necessary testing,
-                    including: proof pressure, flow rate, pressure drop, force,
-                    thermal, environmental, response time, life cycle and electrical
-                    check.
-                </p>
+        <section class="q-section q-section--alt q-founder-section">
+            <div class="q-inner">
+                <div class="q-founder-grid reveal">
+                    <div class="q-founder-col q-founder-col--quote">
+                        <p class="q-founder-eyebrow">
+                            Our commitment to quality
+                        </p>
+                        <blockquote class="q-founder-quote">
+                            “At Rocker Industries, every employee is fully aware of
+                            the human life depending upon the quality and delivery of
+                            our products. We are dedicated to world-class, error-free
+                            performance, and continuous improvement. Our quality process
+                            assures consistent conformance exceeding our internal and
+                            external customer’s expectations.”
+                        </blockquote>
+                        <div class="q-founder-hrule" aria-hidden="true"></div>
+                        <div class="q-founder-byline">
+                            <strong>John Perry</strong>
+                            <em>President &amp; CEO, Rocker Industries</em>
+                        </div>
+                    </div>
+
+                    <div class="q-founder-aside">
+                        <div class="q-founder-vrule" aria-hidden="true"></div>
+                        <div class="q-founder-aside-inner">
+                        <div class="q-founder-signature-block">
+                            <p class="q-founder-signature">John Perry</p>
+                            <div
+                                class="q-founder-signature-line"
+                                aria-hidden="true"
+                            ></div>
+                        </div>
+                        <div class="q-founder-byline q-founder-byline--compact">
+                                <strong>John Perry</strong>
+                                <em>President &amp; CEO, Rocker Industries</em>
+                            </div>
+
+                            <div class="q-founder-certs" aria-label="Certifications">
+                                <div class="q-founder-cert">
+                                    <div class="q-founder-cert-icon" aria-hidden="true">
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M12 3 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-3Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="m9 12 2 2 4-4"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="q-founder-cert-text">
+                                        <span>AS9100</span>
+                                        <span>Certified</span>
+                                    </div>
+                                </div>
+                                <div class="q-founder-cert">
+                                    <div class="q-founder-cert-icon" aria-hidden="true">
+                                        <svg
+                                            viewBox="0 0 24 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M12 3 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-3Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="m9 12 2 2 4-4"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linecap="round"
+                                                stroke-linejoin="round"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="q-founder-cert-text">
+                                        <span>ISO9001</span>
+                                        <span>Certified</span>
+                                    </div>
+                                </div>
+                                <div class="q-founder-cert">
+                                    <div
+                                        class="q-founder-cert-icon q-founder-cert-icon--usa"
+                                        aria-hidden="true"
+                                    >
+                                        <svg
+                                            viewBox="0 0 28 24"
+                                            fill="none"
+                                            xmlns="http://www.w3.org/2000/svg"
+                                        >
+                                            <path
+                                                d="M5 22V4"
+                                                stroke="currentColor"
+                                                stroke-width="1.75"
+                                                stroke-linecap="round"
+                                            />
+                                            <path
+                                                d="M5 5.5c3.8-1.1 7.6-.9 11.2-.4 3.2.4 6.5.2 9.8-.4v7.8c-3.4.7-6.8.9-10 .5-3.8-.5-7.5-.7-11 .4V5.5Z"
+                                                stroke="currentColor"
+                                                stroke-width="1.5"
+                                                stroke-linejoin="round"
+                                            />
+                                            <path
+                                                d="M6.5 8.5c2.5-.4 5.2-.2 8 .3M7 11.5c2.8-.3 5.6-.1 8.5.35"
+                                                stroke="currentColor"
+                                                stroke-width="1"
+                                                stroke-linecap="round"
+                                                opacity="0.45"
+                                            />
+                                        </svg>
+                                    </div>
+                                    <div class="q-founder-cert-text q-founder-cert-text--single">
+                                        <span class="q-founder-cert-line"
+                                            >Made in the USA</span
+                                        >
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="q-section q-quality-highlights">
+            <div class="q-inner">
+                <div class="q-intro-features">
+                    <div class="q-feature reveal">
+                        <div class="q-feature-icon" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M3 7l9-4 9 4-9 4-9-4Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="M3 7v10l9 4 9-4V7"
+                                    stroke="currentColor"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                />
+                                <path
+                                    d="M12 11v10"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                />
+                            </svg>
+                        </div>
+                        <p>
+                            Rocker Industries is a
+                            <strong>Certified Dock-to-Stock supplier</strong> for
+                            the majority of our customers. We strive to find new
+                            ways to continually improve our product and processes,
+                            including implementation of a certified operator program
+                            throughout our facility.
+                        </p>
+                    </div>
+
+                    <div class="q-feature reveal">
+                        <div class="q-feature-icon" aria-hidden="true">
+                            <svg
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M12 3 4 6v6c0 5 3.5 9 8 10 4.5-1 8-5 8-10V6l-8-3Z"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linejoin="round"
+                                />
+                                <path
+                                    d="m9 12 2 2 4-4"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                />
+                            </svg>
+                        </div>
+                        <p>
+                            The Quality Assurance System at Rocker Industries meets
+                            our industries’ highest requirements. Rocker Industries
+                            is certified by Det Norske Veritas (DNV) to
+                            <span class="q-accent">AS9100</span> and
+                            <span class="q-accent">ISO9001</span>, and has certified
+                            in-house testing facilities to perform all necessary
+                            testing, including: proof pressure, flow rate, pressure
+                            drop, force, thermal, environmental, response time, life
+                            cycle and electrical check.
+                        </p>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -922,52 +1059,6 @@
             </div>
         </section>
 
-        <section class="q-section q-cert">
-            <div class="q-inner">
-                <div class="q-cert-grid">
-                    <div class="reveal">
-                        <p class="q-cert-label">Certifications</p>
-                        <div class="q-cert-logos">
-                            <div class="q-cert-logo-cell">
-                                AS9100<br />CERTIFIED
-                            </div>
-                            <div class="q-cert-logo-cell">
-                                ISO9001<br />CERTIFIED
-                            </div>
-                            <div class="q-cert-logo-cell">
-                                DNV<br />DET NORSKE VERITAS
-                            </div>
-                        </div>
-
-                        <p class="q-cert-label q-cert-testing-head">
-                            In-House Testing Capabilities
-                        </p>
-                        <div class="q-cert-lists">
-                            <ul class="q-cert-list">
-                                <li>Proof Pressure</li>
-                                <li>Flow Rate</li>
-                                <li>Pressure Drop</li>
-                                <li>Force</li>
-                                <li>Thermal</li>
-                            </ul>
-                            <ul class="q-cert-list">
-                                <li>Environmental</li>
-                                <li>Response Time</li>
-                                <li>Life Cycle</li>
-                                <li>Electrical Check</li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="q-cert-media reveal" aria-hidden="true">
-                        <img
-                            src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?auto=format&fit=crop&w=1600&q=80"
-                            alt=""
-                        />
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-col footer-col--brand">
@@ -1041,6 +1132,28 @@
             </div>
         </footer>
 
+        <style>
+            /* Footer layout: increase separation between brand and link columns */
+            .site-footer .footer-inner {
+                /* Add a dedicated spacer column so link columns sit right */
+                grid-template-columns: 1.25fr minmax(80px, 1fr) 1fr 1.15fr;
+                column-gap: 42px;
+            }
+
+            .site-footer .footer-col--brand {
+                padding-right: 18px;
+            }
+
+            /* Position link columns toward the right side */
+            .site-footer .footer-col--quicklinks {
+                grid-column: 3;
+            }
+
+            .site-footer .footer-col--contact {
+                grid-column: 4;
+            }
+        </style>
+
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
 
@@ -1104,6 +1217,20 @@
                 els.forEach(function (el) {
                     io.observe(el);
                 });
+            })();
+        </script>
+
+        <script>
+            (function () {
+                var startYear = 2026;
+                var nowYear = new Date().getFullYear();
+                var yearText =
+                    nowYear > startYear ? startYear + "–" + nowYear : "" + startYear;
+                var el = document.getElementById("footerCopyright");
+                if (el) {
+                    el.textContent =
+                        "© " + yearText + " Rocker Industries. All rights reserved.";
+                }
             })();
         </script>
     </body>
