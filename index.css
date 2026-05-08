@@ -11,8 +11,9 @@ body {
 
 /* Inter only for: nav links, hero H1, hero buttons */
 .nav-links ul li a,
-.hero-banner .main-text h1,
-.hero-banner .learn-btn {
+.hero-banner h1,
+.hero-banner .learn-btn,
+.hero-banner [class$="btn-ghost"] {
     font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
         sans-serif !important;
 }
