@@ -95,6 +95,14 @@
                 box-shadow: 0 8px 20px rgba(83, 151, 234, 0.28);
             }
 
+            .about-hero-static .hero-copy h1 span {
+                display: block;
+            }
+
+            .about-hero-static .hero-copy h1 span + span {
+                margin-top: 0.18em;
+            }
+
             /* Layout */
             .about-section {
                 padding: clamp(44px, 6vw, 72px) 0;
@@ -360,19 +368,32 @@
 
             .about-hero-static {
                 position: relative;
-                min-height: clamp(302px, 38vh, 572px);
+                min-height: clamp(520px, 65vh, 980px);
             }
 
-            .about-hero-static::before {
-                content: "";
-                position: absolute;
-                inset: 0;
-                background: linear-gradient(135deg, #0b1324 0%, #12305e 100%);
-                z-index: 0;
+            .about-hero-static .hero-carousel-frame {
+                background-color: #0a1628;
+                background-image: url("images/AboutImage.png");
+                background-repeat: no-repeat;
+                background-position: calc(100% + 40px) center;
+                background-size: auto 100%;
             }
 
-            .about-hero-static .main-text {
-                z-index: 2;
+            .about-hero-static .hero-carousel-frame::before {
+                background: linear-gradient(
+                    to right,
+                    #0a1628 0%,
+                    #0a1628 30%,
+                    rgba(10, 22, 40, 0.7) 50%,
+                    rgba(10, 22, 40, 0) 70%
+                );
+            }
+
+            @media (max-width: 980px) {
+                .about-hero-static .hero-carousel-frame {
+                    background-position: center;
+                    background-size: cover;
+                }
             }
 
             /* Responsive */
@@ -425,24 +446,29 @@
 
         <!-- HERO SECTION -->
         <section class="hero-banner about-hero-static">
+            <div class="hero-carousel-frame" aria-hidden="true"></div>
             <div class="main-text">
-                <h1>
-                    Precision Solenoid and Valve<br />
-                    Solutions Since 1954
-                </h1>
-                <p>
-                    Rocker Industries designs and manufactures high-performance
-                    solenoids and solenoid valves for aerospace, defense, and
-                    commercial applications.
-                </p>
+                <div class="hero-copy">
+                    <h1>
+                        <span>Built for Performance.</span>
+                        <span>Trusted for Generations.</span>
+                    </h1>
+                    <p>
+                        Precision Solenoid and Valve Solutions Since 1954
+                    </p>
 
-                <div class="about-cta-row">
-                    <a href="contact.html" class="learn-btn"
-                        >Contact Our Team →</a
-                    >
-                    <a href="#history" class="about-btn-ghost"
-                        >Explore Our History</a
-                    >
+                    <div class="hero-ctas">
+                        <a
+                            href="contact.html"
+                            class="learn-btn learn-btn--primary"
+                            >Contact Our Team →</a
+                        >
+                        <a
+                            href="#history"
+                            class="learn-btn learn-btn--secondary"
+                            >Explore Our History →</a
+                        >
+                    </div>
                 </div>
             </div>
         </section>
@@ -453,13 +479,13 @@
         >
             <div class="about-inner">
                 <h2 class="about-title">
-                    A Trusted Aerospace and Defense Manufacturing Partner
+                    More Than 70 Years of Engineering Heritage
                 </h2>
 
                 <div class="about-two-col">
                     <div>
                         <p class="about-body">
-                            For more than 70 years, Rocker Industries has
+                            Since 1954, Rocker Industries has
                             supported leading organizations with
                             precision-engineered electromechanical solutions
                             built for demanding applications.
@@ -714,47 +740,7 @@
             </div>
         </section>
 
-        <!-- RESPONSIVE PARTNERSHIP SECTION -->
-        <section
-            class="about-section about-section--title-left about-section--tight-top-half"
-        >
-            <div class="about-inner">
-                <h2 class="about-title">Responsive Partnership. Proven Experience.</h2>
-                <p class="about-body">
-                    Rocker Industries combines decades of aerospace and defense
-                    manufacturing experience with responsive customer support and
-                    practical engineering collaboration.
-                </p>
-                <p class="about-body">
-                    Whether supporting custom applications or build-to-print
-                    requirements, our team is committed to dependable execution
-                    from prototype through production.
-                </p>
-            </div>
-        </section>
-
-        <!-- HISTORY TEASER SECTION -->
-        <section
-            class="about-section about-dark about-dark-scrim about-history-bg"
-            id="history"
-        >
-            <div class="about-inner about-center">
-                <h2 class="about-title">
-                    More Than 70 Years of Engineering Heritage
-                </h2>
-                <p class="about-body">
-                    Founded in the early 1950s, Rocker Industries has supported
-                    generations of aerospace and defense innovation through
-                    precision electromechanical solutions and long-standing
-                    customer relationships.
-                </p>
-                <div style="margin-top: 16px">
-                    <a href="#history" class="about-btn-ghost"
-                        >Explore Our History</a
-                    >
-                </div>
-            </div>
-        </section>
+        <!-- (Removed) Responsive Partnership + History Teaser sections -->
 
         <!-- FINAL CTA SECTION -->
         <section class="about-section about-section--alt">
@@ -763,7 +749,7 @@
                     Looking for a Solenoid or Solenoid Valve Partner?
                 </h2>
                 <p class="about-body">
-                    Whether you need a custom-engineered solution or build-to-print
+                    Whether you need a custom-engineered solution or build-to-print<br />
                     manufacturing support, our team is ready to help.
                 </p>
                 <div style="margin-top: 16px">
