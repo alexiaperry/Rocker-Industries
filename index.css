@@ -227,9 +227,9 @@ nav img {
 
 .main-text h1 {
     font-size: clamp(2.1rem, 4vw, 3.25rem);
-    font-weight: 800;
-    line-height: 1.06;
-    letter-spacing: -0.03em;
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
 }
 .main-text p {
     font-family: "Geist", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI",
@@ -237,6 +237,7 @@ nav img {
     margin: 12px 0 18px;
     font-size: clamp(0.95rem, 1.6vw, 1.15rem);
     color: white;
+    font-weight: 400;
 }
 
 .hero-ctas {
