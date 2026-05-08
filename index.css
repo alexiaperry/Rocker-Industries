@@ -408,56 +408,40 @@ p {
     position: relative;
     overflow: hidden;
     min-height: 480px;
-    --course-card-position: center bottom;
-    --course-fade-55: 0.92;
-    --course-fade-70: 0.7;
-    --course-fade-82: 0.35;
-    --course-fade-92: 0.12;
 }
 
-.course-col::after {
-    content: "";
+.card-image-wrap {
+    position: relative;
+    height: 200px;
+    margin-top: 18px;
+    /* Bleed to card edges (undo .course-col padding) */
+    margin-left: -22px;
+    margin-right: -22px;
+    margin-bottom: -26px;
+    overflow: hidden;
+}
+
+.card-image-wrap img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+}
+
+.course-col--custsprt .card-image-wrap img {
+    object-position: left center;
+}
+
+.card-image-fade {
     position: absolute;
     inset: 0;
-    background-image: linear-gradient(
-            to bottom,
-            rgba(255, 255, 255, 1) 0%,
-            rgba(255, 255, 255, 1) 40%,
-            rgba(255, 255, 255, var(--course-fade-55)) 55%,
-            rgba(255, 255, 255, var(--course-fade-70)) 70%,
-            rgba(255, 255, 255, var(--course-fade-82)) 82%,
-            rgba(255, 255, 255, var(--course-fade-92)) 92%,
-            rgba(255, 255, 255, 0) 100%
-        ),
-        var(--course-card-image);
-    background-size: cover;
-    background-position: var(--course-card-position);
-    background-repeat: no-repeat;
-    border-radius: inherit;
-    z-index: 0;
     pointer-events: none;
-}
-
-.course-col > * {
-    position: relative;
-    z-index: 1;
-}
-
-.course-col--engdes {
-    --course-card-image: url("images/LP-EngDesCard.png");
-}
-
-.course-col--precmfg {
-    --course-card-image: url("images/LP-PrecMfgCard.png");
-}
-
-.course-col--custsprt {
-    --course-card-image: url("images/LP-CustSprtCard.png");
-    --course-card-position: 60% bottom;
-    --course-fade-55: 0.88;
-    --course-fade-70: 0.6;
-    --course-fade-82: 0.28;
-    --course-fade-92: 0.1;
+    background: linear-gradient(to bottom right, white 20%, transparent 60%),
+        /* Stronger top fade (dissolves into card) */
+        linear-gradient(to bottom, white 0%, transparent 40%),
+        /* Slightly stronger left fade */
+        linear-gradient(to right, white 0%, transparent 40%);
 }
 
 .course-col h2 {
@@ -519,7 +503,6 @@ h2 {
 .advantage-link {
     margin-top: auto;
     padding-top: 14px;
-    margin-bottom: clamp(86px, 13vh, 130px);
     text-decoration: none;
     color: var(--brand);
     font-weight: 700;
@@ -533,7 +516,7 @@ h2 {
 
 .trust-bar {
     position: relative;
-    padding: 32px 0;
+    padding: 24px 0;
     background: #f4f6f8;
     overflow: hidden;
 }
