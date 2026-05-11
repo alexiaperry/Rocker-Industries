@@ -261,6 +261,42 @@
                 padding: clamp(6px, 1vw, 12px) 0;
             }
 
+            .q-founder-aside-photo {
+                position: relative;
+                width: 100%;
+                max-width: 100%;
+                border-radius: 12px;
+                overflow: hidden;
+                border: 1px solid rgba(11, 19, 36, 0.08);
+                box-shadow:
+                    0 2px 6px rgba(11, 19, 36, 0.07),
+                    0 16px 36px rgba(11, 19, 36, 0.12);
+                transform: scale(1.06);
+                transform-origin: center center;
+            }
+
+            .q-founder-aside-photo img {
+                display: block;
+                width: 100%;
+                height: auto;
+                vertical-align: middle;
+            }
+
+            .q-founder-aside-photo::after {
+                content: "";
+                position: absolute;
+                inset: 0;
+                pointer-events: none;
+                border-radius: inherit;
+                background: linear-gradient(
+                    165deg,
+                    rgba(255, 255, 255, 0.14) 0%,
+                    rgba(255, 255, 255, 0) 35%,
+                    rgba(30, 96, 145, 0.1) 58%,
+                    rgba(11, 19, 36, 0.32) 100%
+                );
+            }
+
             .q-founder-signature-block {
                 display: inline-block;
                 max-width: 100%;
@@ -780,7 +816,11 @@
 
                     <div class="q-founder-aside">
                         <div class="q-founder-vrule" aria-hidden="true"></div>
-                        <div class="q-founder-aside-inner"></div>
+                        <div class="q-founder-aside-inner">
+                            <div class="q-founder-aside-photo">
+                                <img src="images/engine.jpeg" alt="" />
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
