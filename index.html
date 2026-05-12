@@ -3,7 +3,10 @@
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, viewport-fit=cover"
+        />
         <title>Rocker Industries</title>
         <link
             rel="stylesheet"
@@ -70,7 +73,14 @@
                 </div>
 
                 <div class="nav-links" id="navLinks">
-                    <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+                    <i
+                        class="fa-solid fa-xmark"
+                        onclick="hideMenu()"
+                        role="button"
+                        tabindex="0"
+                        aria-label="Close menu"
+                        onkeydown="if(event.key==='Enter'||event.key===' ')hideMenu()"
+                    ></i>
 
                     <ul>
                         <li><a href="about.html">About</a></li>
@@ -80,7 +90,16 @@
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
                 </div>
-                <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+                <i
+                    class="fa-solid fa-bars nav-menu-open"
+                    onclick="showMenu()"
+                    role="button"
+                    tabindex="0"
+                    aria-label="Open menu"
+                    aria-controls="navLinks"
+                    aria-expanded="false"
+                    onkeydown="if(event.key==='Enter'||event.key===' ')showMenu()"
+                ></i>
             </nav>
         </section>
 
@@ -590,6 +609,14 @@
                 margin-left: 0;
                 margin-right: auto;
             }
+
+            /* Footer: clear grid placement when inner grid collapses (mobile) */
+            @media (max-width: 980px) {
+                .site-footer .footer-col--quicklinks,
+                .site-footer .footer-col--contact {
+                    grid-column: auto;
+                }
+            }
         </style>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -607,15 +634,49 @@
         ></script>
 
         <script>
-            var navLinks = document.getElementById("navLinks");
+            (function () {
+                var navLinks = document.getElementById("navLinks");
+                var menuBtn = document.querySelector(".nav-menu-open");
 
-            function showMenu() {
-                navLinks.style.right = "0";
-            }
+                function setMenuOpen(open) {
+                    if (menuBtn) {
+                        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+                    }
+                }
 
-            function hideMenu() {
-                navLinks.style.right = "-200px";
-            }
+                function showMenu() {
+                    if (!navLinks || window.innerWidth > 767) return;
+                    navLinks.classList.add("is-open");
+                    document.body.classList.add("nav-open");
+                    setMenuOpen(true);
+                }
+
+                function hideMenu() {
+                    if (!navLinks) return;
+                    navLinks.classList.remove("is-open");
+                    document.body.classList.remove("nav-open");
+                    setMenuOpen(false);
+                }
+
+                window.showMenu = showMenu;
+                window.hideMenu = hideMenu;
+
+                window.addEventListener("resize", function () {
+                    if (window.innerWidth > 767) {
+                        if (navLinks) navLinks.classList.remove("is-open");
+                        document.body.classList.remove("nav-open");
+                        setMenuOpen(false);
+                    }
+                });
+
+                if (navLinks) {
+                    navLinks.querySelectorAll("a").forEach(function (link) {
+                        link.addEventListener("click", function () {
+                            if (window.innerWidth <= 767) hideMenu();
+                        });
+                    });
+                }
+            })();
         </script>
 
         <script>
