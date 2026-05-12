@@ -429,26 +429,6 @@ body.nav-open {
     .hero-banner .carousel-indicators {
         bottom: 10px;
     }
-
-    .course .course-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        margin-top: clamp(24px, 6vw, 40px);
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .course .course-grid > .course-col {
-        width: 100%;
-        max-width: 100%;
-        min-height: 0;
-        margin-bottom: clamp(18px, 4vw, 28px);
-    }
-
-    .course > h1 {
-        font-size: clamp(1rem, 4.2vw, 1.35rem);
-        padding: 0 8px;
-    }
 }
 
 /* --------Course------- */
@@ -951,4 +931,28 @@ h2 {
     font-size: 13px;
     color: #aaa;
     margin-bottom: 0;
+}
+
+/* Course section on small screens: base .course rules above were overriding
+   earlier @media (max-width:767px) blocks — keep these after .course .course-grid */
+@media (max-width: 767px) {
+    .course > h1 {
+        font-size: clamp(1rem, 4.2vw, 1.35rem);
+        padding: 0 8px;
+    }
+
+    .course .course-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        margin-top: clamp(24px, 6vw, 40px);
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .course .course-grid > .course-col {
+        width: 100%;
+        max-width: 100%;
+        min-height: 0;
+        margin-bottom: clamp(18px, 4vw, 28px);
+    }
 }
