@@ -1,0 +1,687 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Suppliers • Rocker Industries</title>
+
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Lato&family=Barlow:wght@300&family=Finlandica&family=Poppins:wght@100;200;400;600;700&family=Roboto:ital@1&display=swap"
+            rel="stylesheet"
+        />
+
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+        />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
+            integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM"
+            crossorigin="anonymous"
+        />
+        <script
+            src="https://kit.fontawesome.com/f868733ea1.js"
+            crossorigin="anonymous"
+        ></script>
+
+        <link rel="stylesheet" href="index.css" />
+
+        <style>
+            :root {
+                --ink: #0b1324;
+                --muted: rgba(11, 19, 36, 0.72);
+                --soft: #f4f6f8;
+                --line: rgba(11, 19, 36, 0.12);
+                --brand: #1e6091;
+                --accent-blue: #1e5ebf;
+                --accent-muted-blue: rgba(83, 151, 234, 0.9);
+                --navy-deep: #0b1b2b;
+                --navy-hero: #0a1628;
+                --shadow: 0 14px 34px rgba(16, 24, 40, 0.1);
+                --radius-lg: 18px;
+                --radius-md: 14px;
+            }
+
+            html,
+            body,
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            a,
+            li,
+            span,
+            button,
+            input,
+            select,
+            textarea {
+                font-family: "Geist", system-ui, -apple-system,
+                    BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+            }
+
+            .nav-links ul li a,
+            .hero-banner h1,
+            .hero-banner .learn-btn,
+            .hero-banner [class$="btn-ghost"] {
+                font-family: "Inter", system-ui, -apple-system,
+                    BlinkMacSystemFont, "Segoe UI", sans-serif !important;
+            }
+
+            body {
+                color: var(--ink);
+                background: #ffffff;
+            }
+
+            /* ========== Hero ========== */
+            .suppliers-hero {
+                display: flex;
+                align-items: flex-start;
+                padding-top: 80px;
+            }
+
+            .suppliers-hero .hero-carousel-frame::before {
+                background: linear-gradient(
+                    to right,
+                    #0a1628 0%,
+                    #0a1628 35%,
+                    rgba(10, 22, 40, 0.7) 55%,
+                    rgba(10, 22, 40, 0) 75%
+                );
+            }
+
+            .suppliers-hero .hero-carousel-frame {
+                background: #0a1628;
+            }
+
+            .suppliers-hero .hero-carousel-frame img {
+                position: absolute;
+                top: 0;
+                right: 0;
+                height: 100%;
+                width: 76%;
+                object-fit: cover;
+                object-position: right center;
+            }
+
+            .suppliers-hero .hero-since {
+                color: var(--accent-muted-blue);
+                font-weight: 700;
+                letter-spacing: 0.2em;
+            }
+
+            .suppliers-hero .advantage-accent {
+                width: 56px;
+                height: 4px;
+                margin: 10px 0 16px;
+                background: linear-gradient(
+                    90deg,
+                    var(--accent-blue),
+                    rgba(83, 151, 234, 0.85)
+                );
+                border-radius: 2px;
+            }
+
+            .suppliers-hero .hero-copy p {
+                max-width: 52ch;
+                line-height: 1.65;
+            }
+
+            /* ========== Documents ========== */
+            .suppliers-docs {
+                background: var(--soft);
+                padding: 40px 0 120px;
+                border-top: 1px solid rgba(11, 19, 36, 0.06);
+            }
+
+            .suppliers-docs-inner {
+                width: min(1200px, 94%);
+                margin: 0 auto;
+            }
+
+            .suppliers-eyebrow {
+                margin: 0 0 10px;
+                font-size: 11px;
+                font-weight: 750;
+                letter-spacing: 0.16em;
+                text-transform: uppercase;
+                color: var(--accent-blue);
+            }
+
+            .suppliers-docs h2 {
+                margin: 0 0 14px;
+                text-align: left;
+                font-size: clamp(1.45rem, 2.6vw, 2rem);
+                font-weight: 760;
+                letter-spacing: -0.02em;
+                color: var(--ink);
+            }
+
+            .suppliers-docs-intro {
+                margin: 0 0 clamp(28px, 4vw, 40px);
+                max-width: 72ch;
+                color: var(--muted);
+                font-size: clamp(0.95rem, 1.35vw, 1.05rem);
+                line-height: 1.65;
+            }
+
+            .suppliers-doc-list {
+                list-style: none;
+                padding: 0;
+                margin: 0;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .suppliers-doc-card {
+                display: grid;
+                grid-template-columns: auto minmax(0, 1fr) auto;
+                gap: clamp(14px, 2.5vw, 24px);
+                align-items: center;
+                padding: clamp(18px, 2.5vw, 24px) clamp(18px, 2.5vw, 26px);
+                background: #ffffff;
+                border: 1px solid var(--line);
+                border-radius: var(--radius-md);
+                box-shadow: var(--shadow);
+                transition: box-shadow 0.2s ease, transform 0.2s ease;
+            }
+
+            .suppliers-doc-card:hover {
+                box-shadow: 0 18px 40px rgba(16, 24, 40, 0.12);
+                transform: translateY(-2px);
+            }
+
+            .suppliers-doc-icon {
+                width: 44px;
+                height: 44px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: var(--accent-blue);
+                flex-shrink: 0;
+            }
+
+            .suppliers-doc-icon svg {
+                display: block;
+            }
+
+            .suppliers-doc-body h3 {
+                margin: 0 0 6px;
+                font-size: clamp(1rem, 1.25vw, 1.08rem);
+                font-weight: 760;
+                color: var(--ink);
+                letter-spacing: -0.015em;
+            }
+
+            .suppliers-doc-body p {
+                margin: 0;
+                font-size: 0.95rem;
+                line-height: 1.55;
+                color: var(--muted);
+            }
+
+            .suppliers-doc-actions {
+                display: inline-flex;
+                align-items: center;
+                gap: 12px;
+                flex-shrink: 0;
+            }
+
+            .suppliers-doc-action {
+                display: inline-flex;
+                align-items: center;
+                gap: 7px;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 1.2;
+                text-decoration: none;
+                white-space: nowrap;
+                transition: color 0.15s ease, text-decoration-color 0.15s ease;
+            }
+
+            .suppliers-doc-action i {
+                font-size: 15px;
+            }
+
+            .suppliers-doc-action--view {
+                color: var(--accent-blue) !important;
+            }
+
+            .suppliers-doc-action--view:hover {
+                color: #163f76 !important;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
+
+            .suppliers-doc-action--download {
+                color: rgba(11, 19, 36, 0.5) !important;
+            }
+
+            .suppliers-doc-action--download:hover {
+                color: rgba(11, 19, 36, 0.72) !important;
+                text-decoration: underline;
+                text-underline-offset: 3px;
+            }
+
+            .suppliers-doc-action-divider {
+                width: 1px;
+                height: 18px;
+                flex-shrink: 0;
+                background: rgba(11, 19, 36, 0.18);
+                align-self: center;
+            }
+
+            @media (max-width: 900px) {
+                .suppliers-doc-card {
+                    grid-template-columns: 1fr;
+                    align-items: start;
+                }
+
+                .suppliers-doc-actions {
+                    justify-self: start;
+                }
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <section class="header">
+            <nav>
+                <div>
+                    <a href="index.html" class="logotext"
+                        ><img
+                            src="images/rocker-logo-redesign.png"
+                            alt=""
+                    /></a>
+                </div>
+
+                <div class="nav-links" id="navLinks">
+                    <i class="fa-solid fa-xmark" onclick="hideMenu()"></i>
+
+                    <ul>
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="quality.html">Quality</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <i class="fa-solid fa-bars" onclick="showMenu()"></i>
+            </nav>
+        </section>
+
+        <section class="hero-banner suppliers-hero">
+            <div class="hero-carousel-frame" aria-hidden="true">
+                <img
+                    src="images/Hero-Suppliers.png"
+                    alt=""
+                />
+            </div>
+
+            <div class="main-text">
+                <div class="hero-copy">
+                    <div class="hero-since">Suppliers</div>
+                    <h1>Partnering for Excellence</h1>
+                    <div class="advantage-accent" aria-hidden="true"></div>
+                    <p>
+                        We work with a select network of trusted suppliers who
+                        share our commitment to quality, integrity, and continuous
+                        improvement. This page provides important resources and
+                        requirements to ensure successful collaboration.
+                    </p>
+                    <div class="hero-ctas">
+                        <a
+                            class="learn-btn learn-btn--primary"
+                            href="mailto:contact@rockerindustries.com"
+                            >Supplier Inquiries →</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="suppliers-docs" aria-labelledby="suppliers-docs-heading">
+            <div class="suppliers-docs-inner">
+                <p class="suppliers-eyebrow">Important supplier documents</p>
+                <h2 id="suppliers-docs-heading">Access Essential Resources</h2>
+                <p class="suppliers-docs-intro">
+                    Please review the documents below carefully. These resources
+                    outline our expectations and processes to ensure alignment and
+                    maintain the highest standards of quality, compliance, and
+                    ethical responsibility.
+                </p>
+
+                <ul class="suppliers-doc-list">
+                    <li>
+                        <article class="suppliers-doc-card">
+                            <div class="suppliers-doc-icon" aria-hidden="true">
+                                <svg
+                                    width="28"
+                                    height="28"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M14 2v6h6M8 13h8M8 17h8M8 9h2"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="suppliers-doc-body">
+                                <h3>Purchase Order Terms and Conditions</h3>
+                                <p>
+                                    Standard terms and conditions that govern all
+                                    purchase orders issued by Rocker Industries.
+                                </p>
+                            </div>
+                            <div class="suppliers-doc-actions">
+                                <a
+                                    class="suppliers-doc-action suppliers-doc-action--view"
+                                    href="/assets/documents/PO_TCs_Rev1.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View
+                                    <i
+                                        class="fa-solid fa-arrow-up-right-from-square"
+                                        aria-hidden="true"
+                                    ></i></a>
+                                <span
+                                    class="suppliers-doc-action-divider"
+                                    aria-hidden="true"
+                                ></span>
+                                <a
+                                    class="suppliers-doc-action suppliers-doc-action--download"
+                                    href="/assets/documents/PO_TCs_Rev1.pdf"
+                                    download="PO_TCs_Rev1.pdf"
+                                    >Download
+                                    <i
+                                        class="fa-solid fa-download"
+                                        aria-hidden="true"
+                                    ></i></a>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="suppliers-doc-card">
+                            <div class="suppliers-doc-icon" aria-hidden="true">
+                                <svg
+                                    width="28"
+                                    height="28"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M14 2v6h6M8 13h8M8 17h8M8 9h2"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="suppliers-doc-body">
+                                <h3>
+                                    SQARs – Supplier Quality Assurance Requirements
+                                </h3>
+                                <p>
+                                    Our quality assurance requirements for suppliers
+                                    to ensure consistent delivery of high-quality
+                                    products and services.
+                                </p>
+                            </div>
+                            <div class="suppliers-doc-actions">
+                                <a
+                                    class="suppliers-doc-action suppliers-doc-action--view"
+                                    href="/assets/documents/SupplierSQARS_Rev10.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View
+                                    <i
+                                        class="fa-solid fa-arrow-up-right-from-square"
+                                        aria-hidden="true"
+                                    ></i></a>
+                                <span
+                                    class="suppliers-doc-action-divider"
+                                    aria-hidden="true"
+                                ></span>
+                                <a
+                                    class="suppliers-doc-action suppliers-doc-action--download"
+                                    href="/assets/documents/SupplierSQARS_Rev10.pdf"
+                                    download="SupplierSQARS_Rev10.pdf"
+                                    >Download
+                                    <i
+                                        class="fa-solid fa-download"
+                                        aria-hidden="true"
+                                    ></i></a>
+                            </div>
+                        </article>
+                    </li>
+                    <li>
+                        <article class="suppliers-doc-card">
+                            <div class="suppliers-doc-icon" aria-hidden="true">
+                                <svg
+                                    width="28"
+                                    height="28"
+                                    viewBox="0 0 24 24"
+                                    fill="none"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                >
+                                    <path
+                                        d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8l-6-6Z"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linejoin="round"
+                                    />
+                                    <path
+                                        d="M14 2v6h6M8 13h8M8 17h8M8 9h2"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                    />
+                                </svg>
+                            </div>
+                            <div class="suppliers-doc-body">
+                                <h3>Conflict Minerals Sourcing Policy</h3>
+                                <p>
+                                    Our policy regarding responsible sourcing of
+                                    minerals and compliance with applicable laws and
+                                    regulations.
+                                </p>
+                            </div>
+                            <div class="suppliers-doc-actions">
+                                <a
+                                    class="suppliers-doc-action suppliers-doc-action--view"
+                                    href="/assets/documents/ConflictMineralsPolicy_11.01.13.pdf"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    >View
+                                    <i
+                                        class="fa-solid fa-arrow-up-right-from-square"
+                                        aria-hidden="true"
+                                    ></i></a>
+                                <span
+                                    class="suppliers-doc-action-divider"
+                                    aria-hidden="true"
+                                ></span>
+                                <a
+                                    class="suppliers-doc-action suppliers-doc-action--download"
+                                    href="/assets/documents/ConflictMineralsPolicy_11.01.13.pdf"
+                                    download="ConflictMineralsPolicy_11.01.13.pdf"
+                                    >Download
+                                    <i
+                                        class="fa-solid fa-download"
+                                        aria-hidden="true"
+                                    ></i></a>
+                            </div>
+                        </article>
+                    </li>
+                </ul>
+            </div>
+        </section>
+
+        <footer class="site-footer">
+            <div class="footer-inner">
+                <div class="footer-col footer-col--brand">
+                    <img
+                        class="footer-logo"
+                        src="images/rocker-logo.png"
+                        alt="Rocker Industries"
+                    />
+                    <p class="footer-desc">
+                        Advanced solenoid and solenoid valve solutions for
+                        aerospace, defense, and commercial applications—built for
+                        performance, reliability, and responsive support.
+                    </p>
+                    <div class="footer-social">
+                        <a
+                            class="footer-social-link"
+                            href="https://www.linkedin.com/company/rocker-industries/"
+                            aria-label="LinkedIn"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            ><i class="fa-brands fa-linkedin-in"></i
+                        ></a>
+                        <a
+                            class="footer-social-link"
+                            href="mailto:contact@rockerindustries.com"
+                            aria-label="Email"
+                            ><i class="fa-regular fa-envelope"></i
+                        ></a>
+                    </div>
+                </div>
+                <div class="footer-col footer-col--quicklinks">
+                    <div class="footer-title">Quick Links</div>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About</a></li>
+                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="applications.html">Applications</a></li>
+                        <li><a href="quality.html">Quality</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-col--contact">
+                    <div class="footer-title">Contact</div>
+                    <ul class="footer-links footer-links--contact">
+                        <li><a href="tel:714-908-0777">714-908-0777</a></li>
+                        <li>
+                            <a href="mailto:contact@rockerindustries.com"
+                                >contact@rockerindustries.com</a
+                            >
+                        </li>
+                        <li>
+                            5492 Bolsa Avenue<br />
+                            Huntington Beach, CA 92649
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <div class="footer-bottom-inner">
+                    <div class="footer-copy">
+                        <span id="footerCopyright"
+                            >© 2026 Rocker Industries. All rights reserved.</span
+                        >
+                    </div>
+                    <div class="footer-legal">
+                        <a
+                            href="http://www.rockerindustries.com/Downloads/TCs_Rev_1_UPDATED_1.17.pdf"
+                            >Supplier Terms and Conditions</a
+                        >
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+        <style>
+            .site-footer .footer-inner {
+                grid-template-columns: 1.25fr minmax(80px, 1fr) 1fr 1.15fr;
+                column-gap: 42px;
+            }
+
+            .site-footer .footer-col--brand {
+                padding-right: 18px;
+            }
+
+            .site-footer .footer-col--quicklinks {
+                grid-column: 3;
+            }
+
+            .site-footer .footer-col--contact {
+                grid-column: 4;
+            }
+        </style>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
+
+        <script
+            src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js"
+            integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk"
+            crossorigin="anonymous"
+        ></script>
+        <script
+            src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.min.js"
+            integrity="sha384-kjU+l4N0Yf4ZOJErLsIcvOU2qSb74wXpOhqTvwVx3OElZRweTnQ6d31fXEoRD1Jy"
+            crossorigin="anonymous"
+        ></script>
+
+        <script>
+            var navLinks = document.getElementById("navLinks");
+
+            function showMenu() {
+                navLinks.style.right = "0";
+            }
+
+            function hideMenu() {
+                navLinks.style.right = "-200px";
+            }
+        </script>
+
+        <script>
+            (function () {
+                var startYear = 2026;
+                var nowYear = new Date().getFullYear();
+                var yearText =
+                    nowYear > startYear ? startYear + "–" + nowYear : "" + startYear;
+                var el = document.getElementById("footerCopyright");
+                if (el) {
+                    el.textContent =
+                        "© " +
+                        yearText +
+                        " Rocker Industries. All rights reserved.";
+                }
+            })();
+        </script>
+    </body>
+</html>
