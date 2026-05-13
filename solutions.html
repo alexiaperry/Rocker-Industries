@@ -36,14 +36,9 @@
         />
         <link
             rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/fontawesome.min.css"
-            integrity="sha384-zIaWifL2YFF1qaDiAo0JFgsmasocJ/rqu7LKYH8CoBEXqGbb9eO+Xi3s6fQhgFWM"
+            href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.1.1/css/all.min.css"
             crossorigin="anonymous"
         />
-        <script
-            src="https://kit.fontawesome.com/f868733ea1.js"
-            crossorigin="anonymous"
-        ></script>
         <link
             href="https://fonts.googleapis.com/css2?family=Lato&family=Open+Sans:wght@400;700&display=swap"
             rel="stylesheet"
@@ -65,22 +60,6 @@
                 --shadow-hover: 0 22px 52px rgba(16, 24, 40, 0.14);
                 --radius-lg: 18px;
                 --radius-md: 14px;
-            }
-
-            /* Mark Solutions active */
-
-            /* Solutions is second item in nav list */
-            .nav-links ul li:nth-child(2) > a::after {
-                content: "";
-                position: absolute;
-                left: 50%;
-                transform: translateX(-50%);
-                bottom: -8px;
-                width: 72%;
-                height: 2px;
-                background: var(--accent-muted-blue);
-                border-radius: 999px;
-                box-shadow: 0 8px 20px rgba(83, 151, 234, 0.28);
             }
 
             /* Page layout helpers */
@@ -753,12 +732,22 @@
 
                     <ul>
                         <li><a href="about.html">About</a></li>
-                        <li><a href="solutions.html">Solutions</a></li>
+                        <li><a href="solutions.html" class="nav-link--active">Solutions</a></li>
                         <li><a href="applications.html">Applications</a></li>
                         <li><a href="quality.html">Quality</a></li>
                         <li><a href="contact.html">Contact</a></li>
                     </ul>
+                    <a
+                        href="suppliers.html"
+                        class="nav-link--suppliers-text nav-link--suppliers--drawer"
+                        >Supplier Resources</a
+                    >
                 </div>
+                <a
+                    href="suppliers.html"
+                    class="nav-link--suppliers-text nav-link--suppliers--bar"
+                    >Supplier Resources</a
+                >
                 <i class="fa-solid fa-bars" onclick="showMenu()"></i>
             </nav>
         </section>
@@ -1095,15 +1084,16 @@
         <footer class="site-footer">
             <div class="footer-inner">
                 <div class="footer-col footer-col--brand">
-                    <img
-                        class="footer-logo"
-                        src="images/rocker-logo.png"
-                        alt="Rocker Industries"
-                    />
+                    <a href="index.html" class="footer-logo-link">
+                        <img
+                            class="footer-logo"
+                            src="images/rocker-logo-redesign.png"
+                            alt="Rocker Industries"
+                        />
+                    </a>
                     <p class="footer-desc">
-                        Advanced solenoid and solenoid valve solutions for aerospace,
-                        defense, and commercial applications—built for performance,
-                        reliability, and responsive support.
+                        Advanced solenoid and solenoid valve solutions for
+                        aerospace, defense, and commercial applications.
                     </p>
                     <div class="footer-social">
                         <a
@@ -1122,7 +1112,7 @@
                         ></a>
                     </div>
                 </div>
-                <div class="footer-col footer-col--quicklinks">
+                <div class="footer-col footer-col--links">
                     <div class="footer-title">Quick Links</div>
                     <ul class="footer-links">
                         <li><a href="about.html">About</a></li>
@@ -1130,20 +1120,43 @@
                         <li><a href="applications.html">Applications</a></li>
                         <li><a href="quality.html">Quality</a></li>
                         <li><a href="contact.html">Contact</a></li>
+                        <li><a href="suppliers.html">Suppliers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col footer-col--capabilities">
+                    <div class="footer-title">Capabilities</div>
+                    <ul class="footer-links">
+                        <li><span class="footer-plain">Design</span></li>
+                        <li><span class="footer-plain">Manufacturing</span></li>
+                        <li><span class="footer-plain">Testing</span></li>
+                        <li><span class="footer-plain">Engineering</span></li>
                     </ul>
                 </div>
                 <div class="footer-col footer-col--contact">
                     <div class="footer-title">Contact</div>
-                    <ul class="footer-links footer-links--contact">
-                        <li><a href="tel:714-908-0777">714-908-0777</a></li>
-                        <li>
+                    <ul class="footer-contact-list">
+                        <li class="footer-contact-row">
+                            <span class="footer-contact-icon" aria-hidden="true"
+                                ><i class="fa-solid fa-phone"></i
+                            ></span>
+                            <a href="tel:714-908-0777">714-908-0777</a>
+                        </li>
+                        <li class="footer-contact-row">
+                            <span class="footer-contact-icon" aria-hidden="true"
+                                ><i class="fa-regular fa-envelope"></i
+                            ></span>
                             <a href="mailto:contact@rockerindustries.com"
                                 >contact@rockerindustries.com</a
                             >
                         </li>
-                        <li>
-                            5492 Bolsa Avenue<br />
-                            Huntington Beach, CA 92649
+                        <li class="footer-contact-row">
+                            <span class="footer-contact-icon" aria-hidden="true"
+                                ><i class="fa-solid fa-location-dot"></i
+                            ></span>
+                            <span class="footer-contact-text"
+                                >5492 Bolsa Avenue<br />
+                                Huntington Beach, CA 92649</span
+                            >
                         </li>
                     </ul>
                 </div>
@@ -1155,49 +1168,14 @@
                             >© 2026 Rocker Industries. All rights reserved.</span
                         >
                     </div>
-                    <div class="footer-legal">
-                        <a
-                            href="http://www.rockerindustries.com/Downloads/TCs_Rev_1_UPDATED_1.17.pdf"
-                            >Supplier Terms and Conditions</a
-                        >
-                    </div>
+                    <nav class="footer-legal" aria-label="Legal">
+                        <a href="#">Privacy Policy</a>
+                        <span class="footer-legal-sep" aria-hidden="true">|</span>
+                        <a href="#">Terms of Use</a>
+                    </nav>
                 </div>
             </div>
         </footer>
-
-        <style>
-            /* Footer layout: increase separation between brand and link columns */
-            .site-footer .footer-inner {
-                /* Add a dedicated spacer column so link columns sit right */
-                grid-template-columns: 1.25fr minmax(80px, 1fr) 1fr 1.15fr;
-                column-gap: 42px;
-            }
-
-            .site-footer .footer-col--brand {
-                padding-right: 18px;
-            }
-
-            /* Position link columns toward the right side */
-            .site-footer .footer-col--quicklinks {
-                grid-column: 3;
-            }
-
-            .site-footer .footer-col--contact {
-                grid-column: 4;
-            }
-
-            /* Advantage card titles + accent line (homepage only) */
-            .course .advantage-title {
-                text-align: left;
-                color: #163f76;
-            }
-
-            .course .advantage-accent {
-                width: min(320px, 88%);
-                margin-left: 0;
-                margin-right: auto;
-            }
-        </style>
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.bundle.min.js"></script>
