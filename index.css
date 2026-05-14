@@ -147,6 +147,11 @@ nav {
     z-index: 20;
 }
 
+nav > div:first-of-type {
+    display: flex;
+    align-items: center;
+}
+
 nav img {
     display: block;
     width: auto;
@@ -155,7 +160,6 @@ nav img {
     height: auto;
     margin-top: 0;
     margin-bottom: 0;
-    transform: translateY(-2px);
 }
 
 .logotext {
@@ -203,10 +207,20 @@ nav img {
     }
 }
 
+.nav-links ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
 .nav-links ul li {
     list-style: none;
-    display: inline-block;
-    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
     position: relative;
 }
 
@@ -455,6 +469,7 @@ body.nav-open {
     }
 
     .nav-links ul {
+        display: block;
         padding: 18px 22px 30px;
     }
 
