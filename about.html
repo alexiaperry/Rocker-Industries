@@ -235,6 +235,11 @@
                 margin-top: 18px;
             }
 
+            .about-two-col > *,
+            .about-grid-6 > * {
+                min-width: 0;
+            }
+
             .about-card {
                 background: rgba(255, 255, 255, 0.9);
                 border: 1px solid rgba(11, 19, 36, 0.08);
@@ -347,49 +352,167 @@
                 background-position: center;
             }
 
-            .about-hero-static {
-                position: relative;
-                min-height: clamp(520px, 65vh, 980px);
-            }
-
+            /* About hero: same structure as index — full-bleed frame + image under index.css ::before gradient */
             .about-hero-static .hero-carousel-frame {
                 background-color: #0a1628;
-                background-image: url("images/AboutImage.png");
-                background-repeat: no-repeat;
-                background-position: calc(100% + 40px) center;
-                background-size: auto 100%;
             }
 
-            .about-hero-static .hero-carousel-frame::before {
-                background: linear-gradient(
-                    to right,
-                    #0a1628 0%,
-                    #0a1628 30%,
-                    rgba(10, 22, 40, 0.7) 50%,
-                    rgba(10, 22, 40, 0) 70%
-                );
+            .about-hero-static .about-hero-img {
+                position: absolute;
+                inset: 0;
+                z-index: 1;
+                display: block;
+                width: 100%;
+                height: 100%;
+                max-width: none;
+                object-fit: cover;
+                object-position: center;
             }
 
-            @media (max-width: 980px) {
-                .about-hero-static .hero-carousel-frame {
-                    background-position: center;
-                    background-size: cover;
+            /* Do not override .hero-carousel-frame::before — use index.css linear-gradient */
+
+            @media (min-width: 769px) and (max-width: 1024px) {
+                .about-hero-static .main-text h1 {
+                    font-size: clamp(1.85rem, 3.2vw, 2.85rem);
+                }
+
+                .about-hero-static .main-text p {
+                    font-size: clamp(0.9rem, 1.45vw, 1.08rem);
                 }
             }
 
-            /* Responsive */
-            @media (max-width: 980px) {
+            /* Sections: tablet (max-width 1024px) */
+            @media (max-width: 1024px) {
+                .about-inner {
+                    width: min(1120px, 94%);
+                }
+
+                .about-section {
+                    padding: clamp(36px, 5vw, 60px) 0;
+                }
+
+                .about-title {
+                    font-size: clamp(1.25rem, 2.2vw, 1.85rem);
+                }
+
+                .about-body {
+                    font-size: 15px;
+                }
+
                 .about-grid-6 {
                     grid-template-columns: repeat(2, minmax(0, 1fr));
+                    gap: clamp(14px, 2.2vw, 18px);
                 }
+
                 .about-two-col {
-                    grid-template-columns: 1fr;
+                    gap: clamp(16px, 2.5vw, 28px);
+                }
+
+                .about-card {
+                    padding: 20px 18px;
+                }
+
+                .about-section--core .about-card {
+                    padding: 22px 18px;
+                }
+
+                .about-card h3 {
+                    font-size: 17px;
+                }
+
+                .about-card p {
+                    font-size: 15px;
+                }
+
+                .about-section--core .about-card h3 {
+                    font-size: 17.5px;
+                }
+
+                .about-section--core .about-card p {
+                    font-size: 15px;
                 }
             }
 
-            @media (max-width: 560px) {
+            /* Sections: mobile (max-width 768px) */
+            @media (max-width: 768px) {
+                .about-inner {
+                    width: min(1120px, calc(100% - 28px));
+                }
+
+                .about-section {
+                    padding: clamp(26px, 7vw, 40px) 0;
+                }
+
+                .about-section--tight-top {
+                    padding-top: clamp(4px, 1.5vw, 7px);
+                }
+
+                .about-section--tight-bottom {
+                    padding-bottom: clamp(18px, 4vw, 32px);
+                }
+
+                .about-section--tight-top-half {
+                    padding-top: clamp(16px, 4vw, 28px);
+                }
+
+                .about-section--more-bottom {
+                    padding-bottom: clamp(16px, 3vw, 24px);
+                }
+
+                .about-title {
+                    font-size: clamp(1.15rem, 4.2vw, 1.55rem);
+                    margin-bottom: 10px;
+                }
+
+                .about-body {
+                    font-size: 14.5px;
+                    line-height: 1.75em;
+                }
+
                 .about-grid-6 {
                     grid-template-columns: 1fr;
+                    margin-top: 14px;
+                }
+
+                .about-two-col {
+                    grid-template-columns: 1fr;
+                    margin-top: 14px;
+                }
+
+                .about-media img {
+                    max-height: none;
+                    height: auto;
+                }
+
+                .about-card {
+                    padding: 18px 16px;
+                }
+
+                .about-section--core .about-card {
+                    padding: 20px 16px;
+                }
+
+                .about-icon {
+                    width: 48px;
+                    height: 48px;
+                    margin-bottom: 12px;
+                }
+
+                .about-cta-row {
+                    gap: 10px;
+                    margin-top: 12px;
+                }
+
+                .about-section .learn-btn,
+                .about-section .learn-btn--primary,
+                .about-section .learn-btn--secondary,
+                .about-section .about-btn-ghost {
+                    min-height: 44px;
+                    min-width: 44px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    box-sizing: border-box;
                 }
             }
         </style>
@@ -432,7 +555,14 @@
 
         <!-- HERO SECTION -->
         <section class="hero-banner about-hero-static">
-            <div class="hero-carousel-frame" aria-hidden="true"></div>
+            <div class="hero-carousel-frame" aria-hidden="true">
+                <img
+                    class="about-hero-img"
+                    src="images/AboutImage.png"
+                    alt=""
+                    decoding="async"
+                />
+            </div>
             <div class="main-text">
                 <div class="hero-copy">
                     <h1>
